@@ -1,0 +1,7 @@
+@import "_mixins/font-face";
+
+@include font-face("roboto-example", "~@/assets/fonts/RobotoRegular/RobotoRegular");
+@include font-face("roboto-example", "~@/assets/fonts/RobotoBold/RobotoBold", bold);
+@include font-face("Basis Grotesque Pro", "~@/assets/fonts/BasisGrotesquePro/BasisGrotesquePro-Regular");
+@include font-face("Basis Grotesque Pro Light", "~@/assets/fonts/BasisGrotesquePro/BasisGrotesquePro-Light");
+@include font-face("Basis Grotesque Pro Bold", "~@/assets/fonts/BasisGrotesquePro/BasisGrotesquePro-Bold", bold);

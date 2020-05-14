@@ -1,0 +1,14 @@
+$default-font: "Basis Grotesque Pro", sans-serif;
+$accent: #53a9c2;
+$text: #fdfcff;
+$item-color: #26272c;
+$bg-color: #1c1b21;
+$primary-color: #009cff;
+
+// Customization Bootstrap vars from "app/libs/bootstrap/scss/_variables.scss"
+$grid-gutter-width: 30px;
+$grid-columns: 12;
+$grid-breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px);
+$container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1140px);
+
+$gutter: $grid-gutter-width;

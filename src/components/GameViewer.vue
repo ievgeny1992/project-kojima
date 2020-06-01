@@ -59,6 +59,20 @@
 					</vue-plyr>
 				</div>
 			</div>
+			<!-- <div class="row mt-3">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<button type="button" class="btn btn-outline-primary mr-2" @click="searchGame">
+							<i class="far fa-edit"></i>
+							Редактировать
+						</button>
+						<button type="button" class="btn btn-outline-danger" @click="clearData">
+							<i class="far fa-trash-alt"></i>
+							Удалить
+						</button>
+					</div>
+				</div>
+			</div> -->
 		</div>
     </div>
 </template>

@@ -139,13 +139,11 @@
 
                 const game = this.games[index];
                 const url = 'https://api.rawg.io/api/games/' + game.slug;
-                // const url = 'https://api.rawg.io/api/games?page_size=1&search=' + game.slug;
 
                 axios
                     .get( url )
                     .then( response => {
                         this.currentGame = response.data;
-                        // this.currentGame = response.data.results[0];
                         this.currentGame.my_rating = 1;
                         this.currentGame.complete_flag = false;
                         this.currentGame.background_image__crop = this.getCropImage( this.currentGame.background_image );

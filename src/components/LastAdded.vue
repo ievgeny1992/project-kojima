@@ -69,6 +69,10 @@ export default {
             cursor: pointer;
 
             @include media-breakpoint-up(md) {
+                padding: 15px;
+            }
+
+            @include media-breakpoint-up(lg) {
                 padding: 20px;
             }
 

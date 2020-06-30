@@ -335,10 +335,14 @@ a, a:hover {
 	&__genre {
 		display: inline-block;
 		font-weight: 700;
-		font-size: 14px;;
+		font-size: 12px;
 		padding: 4px 10px;
 		background-color: $bg-color;
 		border-radius: 8px;
+
+		@include media-breakpoint-up(md) {
+			font-size: 14px;
+		}
 	}
 }
 

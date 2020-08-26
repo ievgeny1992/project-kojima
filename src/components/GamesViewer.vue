@@ -38,7 +38,7 @@
 										<i v-if="platforms.platform.slug == 'nintendo'" class="fab game__platform fa-md fa-nintendo-switch"></i>
 									</span>
 								</div>
-								<span class="game__date">
+								<span class="game__date" v-if="game.releasedDate">
 									<i class="far fa-calendar-alt"></i>
 									{{ game.releasedDate | moment('L')}}
 								</span>

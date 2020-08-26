@@ -1,6 +1,6 @@
 <template>
     <div class="game" v-if="game">
-		<div class="container-fluid pt-md-5 pt-3">
+		<div class="container-fluid pt-md-5 pt-3 pb-3">
 			<div class="row">
 				<div class="col-xl-6 col-lg-7 col-md-12 col-sm-12">
 					<img class="game-viewer__img" v-bind:src="game.cover" v-bind:alt="game.slug">
@@ -54,21 +54,8 @@
 				</div>
 
 			</div>
-			<!-- <div class="row mt-3" v-if="game.video">
-				<div class="col-sm-12">
-					<h2 class="game-info__title">
-						Видео
-					</h2>
-				</div>
-				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mt-2 mb-4">
-					<vue-plyr>
-						<video>
-							<source v-bind:src="game.video" type="video/mp4" />
-						</video>
-					</vue-plyr>
-				</div>
-			</div> -->
-			<div class="game-viewer__action row mt-3">
+
+			<!-- <div class="game-viewer__action row mt-3">
 				<div class="col-sm-12">
 					<div class="form-group">
 						<button type="button" class="game-viewer__btn game-viewer__edit-btn mr-2" @click="searchGame">
@@ -80,7 +67,7 @@
 						</button>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
     </div>
 </template>

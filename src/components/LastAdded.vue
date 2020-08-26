@@ -11,6 +11,7 @@
             <div class="last-game col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mt-md-3 mb-md-3 mt-2 mb-2" v-for="(game, index) in games" v-bind:key="index">
                 <router-link :to="{ name: 'Game', params: { slug: game.slug }}" class="last-game__link">
                     <div class="last-game__item">
+                        <div class="last-game__border"></div>
                         <div class="last-game__cover mr-3" v-bind:style="{ backgroundImage: 'url(' + game.coverCrop + ')' }"></div>
                         <div class="last-game__content">
                             <h4 class="last-game__title">
@@ -58,11 +59,11 @@ export default {
     .last-game {
 
         &__item {
+            position: relative;
             display: flex;
             flex-direction: row;
             align-items: center;
             background-color: #26272c;
-            border-left: 10px solid #2a2b30;
             border-radius: 4px;
             padding: 10px;
             transition: all .3s;
@@ -78,8 +79,24 @@ export default {
 
             &:hover {
                 box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.6);
-                border-left: 15px solid #2a2b30;
             }
+
+            &:hover > .last-game__border{
+                width: 6px;
+                background-color: #009cff;
+            }
+        }
+
+        &__border {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            height: 100%;
+            width: 4px;
+            background-color: #2a2b30;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+            transition: all .6s;
         }
 
         &__link {

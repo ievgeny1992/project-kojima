@@ -1,17 +1,15 @@
 <template>
-    <!-- <router-link :to="{ name: 'Genre', params: { genre: genre }}" :genre="genre"> -->
-        <div class="genre__item">
-            <span class="genre__title">
-                <i class="far fa-bookmark"></i> {{ genre }}
-            </span>
-            <div class="genre__percent">
-                {{ getPercent }}%
-            </div>
-            <div class="genre__progress-bar mt-3 mb-3">
-                <div class="genre__progress-bar_load" v-bind:style="{ width: getPercent + '%' }"></div>
-            </div>
+    <div class="genre__item">
+        <span class="genre__title">
+            <i class="far fa-bookmark"></i> {{ genre }}
+        </span>
+        <div class="genre__percent">
+            {{ getPercent }}%
         </div>
-    <!-- </router-link> -->
+        <div class="genre__progress-bar mt-3 mb-3">
+            <div class="genre__progress-bar_load" v-bind:style="{ width: getPercent + '%' }"></div>
+        </div>
+    </div>
 </template>
 
 <script>

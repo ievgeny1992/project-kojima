@@ -25,16 +25,10 @@ const routes = [
 		component: () => import("@/views/Game"),
 		props: true
 	}
-	// {
-	// 	path: '/games/:genre',
-	// 	name: 'Genre',
-	// 	component: () => import("@/views/Genre"),
-	// 	props: true
-	// }
 ]
 
 const router = new VueRouter({
-	mode: 'history',
+	mode: 'hash',
 	base: process.env.BASE_URL,
 	routes
 })

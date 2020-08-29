@@ -73,7 +73,7 @@ export default {
 	methods: {
 		getGames: function () {
 			axios
-				.get('http://192.168.1.229:3000/games')
+				.get(process.env.VUE_APP_SERVER_URL + '/games')
 				.then(response => ( this.games = response.data ))
 		},
 	},

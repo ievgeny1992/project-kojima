@@ -45,7 +45,7 @@ export default {
 	methods: {
 		getLastAddedGames: function () {
 			axios
-				.get('http://192.168.1.229:3000/games/last')
+				.get(process.env.VUE_APP_SERVER_URL + '/games/last')
 				.then(response => ( this.games = response.data ))
 		}
 	},

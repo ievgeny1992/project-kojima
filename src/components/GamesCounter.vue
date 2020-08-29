@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col mt-3">
                         <div class="games-counter">
-                            <span class="games-counter__digit">{{ count }}</span>
+                            <span class="games-counter__digit">{{ countAllGames }}</span>
                         </div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                 <div class="row">
                     <div class="col mt-3">
                         <div class="games-counter games-counter_complete">
-                            <span class="games-counter__digit">17</span>
+                            <span class="games-counter__digit">{{ countCompleteGames }}</span>
                         </div>
                     </div>
                 </div>
@@ -45,18 +45,26 @@ export default {
     name: 'GamesCounter',
 	data: function () {
 		return {
-			count: null
+			countAllGames: null,
+			countCompleteGames: null
 		}
 	},
 	methods: {
 		getGamesCount: function () {
 			axios
-				.get('http://192.168.1.229:3000/games/count')
-				.then(response => ( this.count = response.data ))
+				.get(process.env.VUE_APP_SERVER_URL + '/games/count')
+				.then(response => ( this.countAllGames = response.data ))
+        },
+
+		getCompleteCount: function () {
+			axios
+				.get(process.env.VUE_APP_SERVER_URL + '/games/complete-games')
+				.then(response => ( this.countCompleteGames = response.data ))
 		}
 	},
 	mounted: function () {
 		this.getGamesCount();
+		this.getCompleteCount();
 	}
 }
 </script>

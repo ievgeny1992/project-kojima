@@ -29,13 +29,13 @@ export default {
 	methods: {
 		getGenresCount: function () {
 			axios
-				.get('http://192.168.1.229:3000/games/genres-count')
+				.get(process.env.VUE_APP_SERVER_URL + '/games/genres-count')
 				.then(response => ( this.count = response.data ))
         },
 
 		getGenreCount: function () {
 			axios
-				.get('http://192.168.1.229:3000/games/genres-count/' + this.genre)
+				.get(process.env.VUE_APP_SERVER_URL + '/games/genres-count/' + this.genre)
 				.then(response => ( this.genreCount = response.data ))
         }
     },

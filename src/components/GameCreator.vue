@@ -173,7 +173,7 @@
                 }
 
                 axios
-                    .post( 'http://192.168.1.229:3000/games', addedGame)
+                    .post( process.env.VUE_APP_SERVER_URL + '/games', addedGame)
                     .then( response => {
                         this.added = response;
                     })

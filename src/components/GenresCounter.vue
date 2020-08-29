@@ -32,7 +32,7 @@ export default {
 	methods: {
 		getGenres: function () {
 			axios
-				.get('http://192.168.1.229:3000/games/genres')
+				.get(process.env.VUE_APP_SERVER_URL + '/games/genres')
 				.then(response => ( this.genres = response.data ))
 		}
 	},

@@ -85,7 +85,7 @@ export default {
 	methods: {
 		getGames: function () {
 			axios
-				.get( 'http://192.168.1.229:3000/games/game/' + this.$route.params.slug )
+				.get(process.env.VUE_APP_SERVER_URL + '/games/game/' + this.$route.params.slug )
 				.then(response => ( this.game = response.data ))
 		}
     },

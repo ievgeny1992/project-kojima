@@ -1,11 +1,7 @@
 <template>
 	<div class="app" id="app">
 		<aside class="sidebar pt-md-5 pt-4">
-			<div class="row">
-				<div class="col">
-					<div class="sidebar__avatar"></div>
-				</div>
-			</div>
+		<div class="sidebar__avatar"></div>
 			<nav class="sidebar__nav">
 				<div class="row">
 					<div class="col">

@@ -83,7 +83,7 @@ export default {
 
             &:hover > .last-game__border{
                 width: 6px;
-                background-color: #009cff;
+                background-color: $primary-color;
             }
         }
 

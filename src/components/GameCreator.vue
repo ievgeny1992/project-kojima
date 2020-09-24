@@ -29,8 +29,9 @@
         <div class="col-xl-3 col-lg-4 col-md-4 pt-3">
             <transition name="fade">
                 <div class="found-games" v-if="games">
-                    <div class="found-games__item mb-3" v-for="(game, index) in games" v-bind:key="index" v-on:click="selectGame(index)" v-bind:class="{ 'found-games__item_active': selectGameIndex === index }">
-                        <div class="found-games__cover mr-2" v-bind:style="{ backgroundImage: 'url(' + game.background_image + ')' }"></div>
+                    <div class="found-games__item mb-3" v-for="(game, index) in games" v-bind:key="index" v-on:click="selectGame(index)">
+                        <div class="found-games__select-point" v-bind:class="{ 'found-games__select-point_active' : selectGameIndex === index }"></div>
+                        <div class="found-games__cover mr-2" v-bind:style="{ backgroundImage: 'url(' + game.background_image + ')' }" v-if="game.background_image"></div>
                         <h4 class="found-games__title">
                             {{ game.name }} <span class="pr-2">{{ game.released | moment('L')}}</span>
                         </h4>
@@ -42,7 +43,7 @@
         <div class="col-xl-3 col-lg-4 col-md-4 pt-3" v-if="currentGame">
             <transition name="fade">
                 <div class="found-game">
-                    <img class="found-game__img" :src="currentGame.background_image" v-if="currentGame.background_image" :alt="currentGame.slug">
+                    <img class="found-game__img" :src="currentGame.background_image__crop" :alt="currentGame.slug">
                     <div class="card-body">
                         <h4 class="pt-2">
                             {{ currentGame.name }}
@@ -105,7 +106,7 @@
     import axios from 'axios';
 
     export default {
-        name: 'CharacterCreator',
+        name: 'GameCreator',
         data: function () {
             return {
                 games: null,
@@ -121,7 +122,7 @@
             searchGame: function () {
                 this.clearData();
 
-                if ( this.insertGame == null ) {
+                if ( !this.insertGame ) {
                     this.empty = 'Введите название игры!';
                 } else {
                     const url = 'https://api.rawg.io/api/games?page_size=9&search=' + this.insertGame;
@@ -181,9 +182,13 @@
             },
 
             getCropImage: function ( image ) {
-                const arrayOfStrings = image.split('media/');
-                const cropImage = arrayOfStrings[0] + 'media/crop/600/400/' + arrayOfStrings[1];
-                return cropImage;
+                if ( image ) {
+                    const arrayOfStrings = image.split('media/');
+                    const cropImage = arrayOfStrings[0] + 'media/crop/600/400/' + arrayOfStrings[1];
+                    return cropImage;
+                } else {
+                    return 'http://via.placeholder.com/400';
+                }
             },
 
             clearData: function () {

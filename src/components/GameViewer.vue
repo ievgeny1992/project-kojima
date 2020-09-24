@@ -26,21 +26,16 @@
 						</span>
 					</div>
 					<span class="game-viewer__date mt-3">
-						<i class="far fa-calendar-alt mr-1"></i>
+						<i class="fal fa-calendar-alt mr-1"></i>
 						{{ game.releasedDate | moment('L') }}
 					</span>
 					<span class="game-viewer__date mt-1">
-						<i class="far fa-calendar-check mr-1"></i>
+						<i class="fal fa-calendar-check mr-1"></i>
 						{{ game.addedDate | moment("from", "now") }}
 					</span>
 				</div>
 			</div>
 			<div class="row mt-4" v-if="game.description">
-				<div class="col-sm-12">
-					<h2 class="game-info__title">
-						Об игре
-					</h2>
-				</div>
 				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 game-viewer__description" v-html="game.description">
 
 				</div>
@@ -131,7 +126,8 @@ export default {
 			border: 2px solid;
 			border-radius: 12px;
 			border: none;
-			background-color: rgba(28, 27, 33, 0.7);
+			background-color: rgba(28, 27, 33, 0.5);
+			backdrop-filter: saturate(120%) blur(4px);
 			box-sizing: border-box;
 			box-shadow: 0 16px 38px -12px rgba(0,0,0,.56),
 			0 4px 25px 0 rgba(0,0,0,.12),

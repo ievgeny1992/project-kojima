@@ -21,7 +21,7 @@
                                 {{ genre.name }}
                             </div>
                             <span class="last-game__date">
-                                <i class="far fa-calendar-check"></i>
+                                <i class="fal fa-calendar-check"></i>
                                 {{ game.addedDate | moment("from", "now") }}
                             </span>
                         </div>
@@ -82,7 +82,7 @@ export default {
             }
 
             &:hover > .last-game__border{
-                width: 6px;
+                width: 4px;
                 background-color: $primary-color;
             }
         }
@@ -96,7 +96,7 @@ export default {
             background-color: #2a2b30;
             border-top-left-radius: 4px;
             border-bottom-left-radius: 4px;
-            transition: all .6s;
+            transition: all .3s;
         }
 
         &__link {

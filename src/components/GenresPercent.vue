@@ -1,10 +1,16 @@
 <template>
     <div class="genre__item">
-        <span class="genre__title">
-            <i class="far fa-bookmark"></i> {{ genre }}
-        </span>
-        <div class="genre__percent">
-            {{ getPercent }}%
+        <div class="row justify-content-between">
+            <div class="col-auto">
+                <span class="genre__title">
+                    <i class="far fa-bookmark"></i> {{ genre }}
+                </span>
+            </div>
+            <div class="col">
+                <div class="genre__percent">
+                    {{ getPercent }}%
+                </div>
+            </div>
         </div>
         <div class="genre__progress-bar mt-3 mb-3">
             <div class="genre__progress-bar_load" v-bind:style="{ width: getPercent + '%' }"></div>
@@ -75,14 +81,6 @@ export default {
 
         &__title {
             font-size: 16px;
-
-            @include media-breakpoint-up(md) {
-                font-size: 17px;
-            }
-
-            @include media-breakpoint-up(lg) {
-                font-size: 18px;
-            }
         }
 
         &__percent {

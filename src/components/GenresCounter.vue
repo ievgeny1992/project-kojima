@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 mt-md-3 mb-md-3 mt-2 mb-2" v-for="(genre, index) in genres" v-bind:key="index">
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 mt-md-3 mb-md-3 mt-2 mb-2" v-for="(genre, index) in genres" v-bind:key="index">
                 <GenresPercent :genre="genre" />
             </div>
         </div>

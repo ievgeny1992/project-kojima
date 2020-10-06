@@ -1,8 +1,8 @@
 <template>
     <div class="game" v-if="game">
 		<div class="container">
-			<div class="row">
-				<div class="col-12 pt-md-5 pt-3 pb-3">
+			<div class="row mt-md-5 mt-1 mb-4">
+				<div class="col-12">
 					<div class="game-viewer">
 						<div class="game-viewer__top">
 							<img class="game-viewer__img" v-bind:src="game.cover" v-bind:alt="game.slug">
@@ -43,53 +43,75 @@
 					</div>
 				</div>
 			</div>
-			<div class="row" v-if="game.description">
-				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 game-viewer__description" v-html="game.description">
+			<div class="row game-viewer__content no-gutters mb-4" v-if="game.description">
+				<div class="col-12">
+					<div class="game-viewer__description" v-html="game.description">
 
+					</div>
 				</div>
 
-				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12" v-if="game.video">
+				<div class="col-xl-7 col-lg-8 col-md-12 col-sm-12" v-if="game.video">
 					<vue-plyr>
 						<video>
 							<source v-bind:src="game.video" type="video/mp4" />
 						</video>
 					</vue-plyr>
 				</div>
-
 			</div>
-
-			<!-- <div class="game-viewer__action row mt-3">
-				<div class="col-sm-12">
-					<div class="form-group">
-						<button type="button" class="game-viewer__btn game-viewer__edit-btn mr-2" @click="searchGame">
-							<i class="fas fa-pen"></i>
-
-						</button>
-						<button type="button" class="game-viewer__btn game-viewer__remove-btn" @click="clearData">
-							<i class="fas fa-times"></i>
-						</button>
-					</div>
+			<div class="row mb-3">
+				<div class="col-auto">
+					<button type="button" class="game-viewer__btn game-viewer__edit-btn mr-2">
+						<i class="fal fa-pen"></i>
+						<span>
+							Редактировать
+						</span>
+					</button>
+					<button type="button" class="game-viewer__btn game-viewer__remove-btn" @click="callDeleteDialog">
+						<i class="fal fa-trash-alt"></i>
+						<span>
+							Удалить
+						</span>
+					</button>
 				</div>
-			</div> -->
+			</div>
 		</div>
+
+		<ModalConfirm :game="game" v-if='confirmModal' @confirm="deleteGame" @cancel="cancelDeleteDialog" />
     </div>
 </template>
 
 <script>
 import axios from "axios"
+import ModalConfirm from '@/components/ModalConfirm.vue'
 
 export default {
     name: 'GameViewer',
 	data: function () {
 		return {
-			game: null
+			game: null,
+			confirmModal: false
 		}
+	},
+	components: {
+		ModalConfirm
 	},
 	methods: {
 		getGames: function () {
 			axios
 				.get(process.env.VUE_APP_SERVER_URL + '/games/game/' + this.$route.params.slug )
 				.then(response => ( this.game = response.data ))
+		},
+
+		callDeleteDialog: function () {
+			this.confirmModal = true;
+		},
+
+		cancelDeleteDialog: function () {
+			this.confirmModal = false;
+		},
+
+		deleteGame: function () {
+			this.$router.push('/');
 		}
     },
 	mounted: function () {
@@ -213,6 +235,16 @@ export default {
 			}
 		}
 
+		&__content {
+			padding: 0px;
+			border-radius: 10px;
+
+			@include media-breakpoint-up(md) {
+				padding: 18px 20px;
+				background-color: #26272c;
+			}
+		}
+
 		&__description {
 			font-size: 16px;
 
@@ -253,18 +285,23 @@ export default {
 			}
 		}
 
-		&__action {
-
-		}
-
 		&__btn {
-			width: 45px;
-			height: 45px;
+			width: 43px;
+			height: 43px;
 			cursor: pointer;
-			background-color: transparent;
-			border: 2px #e9eaec solid;
-			border-radius: 50%;
-			transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out;
+			background-color: #26272c;
+			border: 2px #26272c solid;
+			border-radius: 14px;
+			transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out, border-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out, -webkit-box-shadow 0.25s ease-in-out;
+
+			@include media-breakpoint-up(md) {
+				width: 50px;
+				height: 50px;
+			}
+
+			& > span {
+				display: none;
+			}
 
 			&:focus {
 				outline: none;
@@ -275,8 +312,7 @@ export default {
 			color: #44a184;
 
 			&:hover {
-				background-color: #e2fffa;
-				border: 2px #e2fffa solid;
+				border: 2px #44a184 solid;
 			}
 		}
 
@@ -284,8 +320,7 @@ export default {
 			color: #c94052;
 
 			&:hover {
-				background-color: #fdf4f5;
-				border: 2px #fdf4f5 solid;
+				border: 2px #c94052 solid;
 			}
 		}
 	}

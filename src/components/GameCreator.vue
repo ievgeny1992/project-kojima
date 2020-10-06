@@ -12,11 +12,11 @@
 
                 </div>
                 <button type="button" class="btn btn-outline-primary" @click="searchGame">
-                    <i class="fas fa-search"></i>
+                    <i class="fal fa-search"></i>
                     Найти
                 </button>
                 <button type="button" class="btn btn-outline-danger" @click="clearData">
-                    <i class="far fa-trash-alt"></i>
+                    <i class="fal fa-trash-alt"></i>
                     Очистить
                 </button>
             </div>
@@ -91,7 +91,7 @@
                         </div>
                         <div class="form-group" v-else>
                             <button type="button" @click="addGame" class="btn btn-outline-primary">
-                                <i class="fas fa-plus"></i>
+                                <i class="fal fa-plus"></i>
                                 Добавить
                             </button>
                         </div>

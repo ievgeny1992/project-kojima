@@ -8,7 +8,7 @@
 			</div>
 			<div class="col games__count">
 				<h3>
-					<i class="fa fa-gamepad" aria-hidden="true"></i> {{ count }}
+					<i class="fal fa-gamepad" aria-hidden="true"></i> {{ count }}
 				</h3>
 			</div>
 		</div>

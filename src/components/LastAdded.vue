@@ -65,17 +65,9 @@ export default {
             align-items: center;
             background-color: #26272c;
             border-radius: 4px;
-            padding: 10px;
+            padding: 20px 30px 20px 20px;
             transition: all .3s;
             cursor: pointer;
-
-            @include media-breakpoint-up(md) {
-                padding: 15px;
-            }
-
-            @include media-breakpoint-up(lg) {
-                padding: 20px;
-            }
 
             &:hover {
                 box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.6);

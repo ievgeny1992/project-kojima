@@ -4,9 +4,9 @@
             <div class="modal__window">
                 <div class="modal__inner row align-items-center no-gutters">
                     <div class="col-7">
-                        <span class="modal__text">
+                        <p class="modal__text">
                             Удалить {{ game.name }}?
-                        </span>
+                        </p>
                     </div>
                     <div class="col">
                         <button class="modal__button modal__button_confirm" @click="onConfirm">
@@ -54,17 +54,13 @@ export default {
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 90%;
-            max-width: 600px;
-            height: 120px;
+            width: 96%;
+            max-width: 650px;
+            height: 125px;
             transform: translate(-50%, -50%);
             background-color: $bg-color;
             padding: 0px 0px 0px 20px;
             border-radius: 10px;
-
-			@include media-breakpoint-up(md) {
-                width: 600px;
-			}
         }
 
         &__inner {
@@ -72,13 +68,17 @@ export default {
         }
 
         &__text {
+            width: 100%;
+            margin: 0px;
+            padding: 0px 10px 0px 0px;
+            text-align: center;
             font-size: 18px;
         }
 
         &__button {
             background: transparent;
             width: 100%;
-            height: 120px;
+            height: 125px;
             color: #fff;
             font-size: 27px;
             padding: 0px;
@@ -86,6 +86,7 @@ export default {
             border-left: 2px solid #26272c;
             outline: none;
             cursor: pointer;
+            transition: all .2s;
 
             &:focus {
                 outline: none !important;

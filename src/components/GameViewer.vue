@@ -111,7 +111,12 @@ export default {
 		},
 
 		deleteGame: function () {
-			this.$router.push('/');
+			axios
+				.delete( process.env.VUE_APP_SERVER_URL + '/games/game/' + this.game._id)
+				.then( response => {
+					if ( response.status == 200 ) this.$router.push('/');
+				})
+				.catch(error => ( console.log(error) ));
 		}
     },
 	mounted: function () {

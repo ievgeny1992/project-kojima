@@ -11,18 +11,18 @@
 							</span>
 						</div>
 						<div class="game-viewer__bottom mt-2 mt-md-0">
-							<h1 class="game-viewer__title mb-3">
+							<h1 class="game-viewer__title">
 								{{ game.name }}
 							</h1>
-							<div class="row justify-content-between align-items-center mt-3">
+							<div class="row justify-content-between align-items-center mb-3">
 								<div class="col-auto">
-									<span class="ml-1 mr-1" v-for="(platforms, index) in game.platforms" v-bind:key="index">
-										<i v-if="platforms.platform.slug == 'xbox'" class="fab game-viewer__platform fa-md fa-xbox"></i>
-										<i v-if="platforms.platform.slug == 'playstation'" class="fab game-viewer__platform fa-md fa-playstation"></i>
-										<i v-if="platforms.platform.slug == 'pc'" class="fab game-viewer__platform fa-md fa-windows"></i>
-										<i v-if="platforms.platform.slug == 'linux'" class="fab game-viewer__platform fa-md fa-linux"></i>
-										<i v-if="platforms.platform.slug == 'mac'" class="fab game-viewer__platform fa-md fa-apple"></i>
-										<i v-if="platforms.platform.slug == 'nintendo'" class="fab game-viewer__platform fa-md fa-nintendo-switch"></i>
+									<span v-for="(platforms, index) in game.platforms" v-bind:key="index">
+										<i v-if="platforms.platform.slug == 'xbox'" class="ml-1 mr-1 fab game-viewer__platform fa-md fa-xbox"></i>
+										<i v-if="platforms.platform.slug == 'playstation'" class="ml-1 mr-1 fab game-viewer__platform fa-md fa-playstation"></i>
+										<i v-if="platforms.platform.slug == 'pc'" class="ml-1 mr-1 fab game-viewer__platform fa-md fa-windows"></i>
+										<i v-if="platforms.platform.slug == 'linux'" class="ml-1 mr-1 fab game-viewer__platform fa-md fa-linux"></i>
+										<i v-if="platforms.platform.slug == 'mac'" class="ml-1 mr-1 fab game-viewer__platform fa-md fa-apple"></i>
+										<i v-if="platforms.platform.slug == 'nintendo'" class="ml-1 mr-1 fab game-viewer__platform fa-md fa-nintendo-switch"></i>
 									</span>
 								</div>
 								<div class="col-auto">
@@ -32,7 +32,7 @@
 									</span>
 								</div>
 							</div>
-							<div class="row mt-3">
+							<div class="row">
 								<div class="col">
 									<div class="game-viewer__genre mr-2"  v-for="(genre, index) in game.genres" v-bind:key="index">
 										{{ genre.name }}
@@ -76,7 +76,9 @@
 			</div>
 		</div>
 
-		<ModalConfirm :game="game" v-if='confirmModal' @confirm="deleteGame" @cancel="cancelDeleteDialog" />
+		<transition name="fade">
+			<ModalConfirm :name="game.name" v-if='confirmModal' @confirm="deleteGame" @cancel="cancelDeleteDialog" />
+		</transition>
     </div>
 </template>
 
@@ -187,8 +189,8 @@ export default {
 
 		&__user-rating {
 			position: absolute;
-			top: 15px;
-			right: 15px;
+			top: 9px;
+			right: 9px;
 			width: 60px;
 			height: 60px;
 			line-height: 60px;
@@ -213,6 +215,8 @@ export default {
 				height: 60px;
 				line-height: 60px;
 				font-size: 17px;
+				top: 9px;
+				right: 9px;
 			}
 
 			@include media-breakpoint-up(md) {
@@ -220,6 +224,8 @@ export default {
 				height: 70px;
 				line-height: 70px;
 				font-size: 19px;
+				top: 15px;
+				right: 15px;
 			}
 
 			@include media-breakpoint-up(lg) {
@@ -291,18 +297,13 @@ export default {
 		}
 
 		&__btn {
-			width: 43px;
-			height: 43px;
+			width: 53px;
+			height: 53px;
 			cursor: pointer;
 			background-color: #26272c;
 			border: 2px #26272c solid;
 			border-radius: 14px;
 			transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out, border-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out, -webkit-box-shadow 0.25s ease-in-out;
-
-			@include media-breakpoint-up(md) {
-				width: 50px;
-				height: 50px;
-			}
 
 			& > span {
 				display: none;

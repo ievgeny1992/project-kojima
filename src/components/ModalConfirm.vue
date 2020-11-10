@@ -1,33 +1,31 @@
 <template>
-    <transition name="fade">
-        <div class="modal">
-            <div class="modal__window">
-                <div class="modal__inner row align-items-center no-gutters">
-                    <div class="col-7">
-                        <p class="modal__text">
-                            Удалить {{ game.name }}?
-                        </p>
-                    </div>
-                    <div class="col">
-                        <button class="modal__button modal__button_confirm" @click="onConfirm">
-                            <i class="far fa-check"></i>
-                        </button>
-                    </div>
-                    <div class="col">
-                        <button class="modal__button modal__button_cancel" @click="onCancel">
-                            <i class="far fa-times"></i>
-                        </button>
-                    </div>
+    <div class="modal">
+        <div class="modal__window">
+            <div class="modal__inner row align-items-center no-gutters animate__animated animate__rubberBand">
+                <div class="col-7">
+                    <p class="modal__text">
+                        Удалить {{ name }}?
+                    </p>
+                </div>
+                <div class="col">
+                    <button class="modal__button modal__button_confirm" @click="onConfirm">
+                        <i class="far fa-check"></i>
+                    </button>
+                </div>
+                <div class="col">
+                    <button class="modal__button modal__button_cancel" @click="onCancel">
+                        <i class="far fa-times"></i>
+                    </button>
                 </div>
             </div>
         </div>
-    </transition>
+    </div>
 </template>
 
 <script>
 export default {
     name: 'ModalConfirm',
-    props: [ "game" ],
+    props: [ "name" ],
 	methods: {
 		onConfirm() {
 			this.$emit("confirm");
@@ -56,15 +54,18 @@ export default {
             left: 50%;
             width: 96%;
             max-width: 650px;
-            height: 125px;
+            height: 100px;
             transform: translate(-50%, -50%);
-            background-color: $bg-color;
-            padding: 0px 0px 0px 20px;
-            border-radius: 10px;
         }
 
         &__inner {
-            height: 100%;
+            background-color: $bg-color;
+            padding: 0px 0px 0px 20px;
+            border-radius: 10px;
+
+			@include media-breakpoint-up(md) {
+                height: 125px;
+			}
         }
 
         &__text {
@@ -72,13 +73,17 @@ export default {
             margin: 0px;
             padding: 0px 10px 0px 0px;
             text-align: center;
-            font-size: 18px;
+            font-size: 16px;
+
+			@include media-breakpoint-up(md) {
+                font-size: 18px;
+			}
         }
 
         &__button {
             background: transparent;
             width: 100%;
-            height: 125px;
+            height: 100px;
             color: #fff;
             font-size: 27px;
             padding: 0px;
@@ -87,6 +92,10 @@ export default {
             outline: none;
             cursor: pointer;
             transition: all .2s;
+
+			@include media-breakpoint-up(md) {
+                height: 125px;
+			}
 
             &:focus {
                 outline: none !important;

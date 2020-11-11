@@ -1,7 +1,7 @@
 <template>
     <div class="modal">
         <div class="modal__window">
-            <div class="modal__inner row align-items-center no-gutters animate__animated animate__rubberBand">
+            <div class="modal__inner row align-items-center no-gutters">
                 <div class="col-7">
                     <p class="modal__text">
                         Удалить {{ name }}?

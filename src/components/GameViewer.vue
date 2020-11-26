@@ -252,7 +252,7 @@ export default {
 
 			@include media-breakpoint-up(md) {
 				padding: 18px 20px;
-				background-color: #26272c;
+				background-color: $item-color;
 			}
 		}
 
@@ -300,8 +300,8 @@ export default {
 			width: 53px;
 			height: 53px;
 			cursor: pointer;
-			background-color: #26272c;
-			border: 2px #26272c solid;
+			background-color: $item-color;
+			border: 2px $item-color solid;
 			border-radius: 14px;
 			transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out, border-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out, -webkit-box-shadow 0.25s ease-in-out;
 

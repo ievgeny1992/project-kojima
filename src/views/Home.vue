@@ -35,7 +35,7 @@ export default {
 	methods: {
 		getGamesCount: function () {
 			axios
-				.get('http://192.168.1.229:3000/games/count')
+				.get(process.env.VUE_APP_SERVER_URL + '/games/count')
 				.then(response => ( this.count = response.data ))
 		}
 	},

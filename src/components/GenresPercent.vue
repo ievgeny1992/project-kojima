@@ -62,7 +62,7 @@ export default {
         overflow: hidden;
 
         &__item {
-            background-color: #26272c;
+            background-color: $item-color;
             border-left: 10px solid #2a2b30;
             border-radius: 4px;
             padding: 10px;

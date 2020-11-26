@@ -33,7 +33,7 @@ a, a:hover {
 }
 
 .page__content {
-	background-color: #1c1b21;
+	background-color: $bg-color;
 }
 
 .app {
@@ -154,7 +154,7 @@ a, a:hover {
 			center
 			center;
 		background-size: cover;
-		border: 4px solid #26272c;
+		border: 4px solid $item-color;
 		border-radius: 50%;
 
 		@include media-breakpoint-up(md) {
@@ -165,8 +165,8 @@ a, a:hover {
 	@include media-breakpoint-up(md) {
 		width: 80px;
 		min-height: 100vh;
-		background-color: #333237;
-		border-right: 4px solid #26272c;
+		background-color: $bg-color;
+		border-right: 2px solid #2e2e36;
 		margin-right: 15px;
 	}
 
@@ -217,6 +217,7 @@ a, a:hover {
 		position: relative;
 		transition: all .3s;
 		cursor: pointer;
+		border-radius: 8px;
 
 		&:hover {
 			box-shadow: 0 16px 38px -12px rgba(0,0,0,.56),
@@ -236,12 +237,11 @@ a, a:hover {
 
 .game {
 	position: relative;
-	border-radius: 10px;
-	overflow: hidden;
 
 	&__img {
 		min-width: 100%;
 		width: 100%;
+		border-radius: 8px;
 	}
 
 	&__title {
@@ -250,20 +250,14 @@ a, a:hover {
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 		color: $text;
+		text-shadow: 1px 1px 2px #1c1b21, -0.5px .5px 1px #1c1b21;
 		text-decoration: none;
-		font-size: 20px;
+		padding-left: 2px;
+		font-size: 22px;
 		margin: 0;
 
 		@include media-breakpoint-up(md) {
-			font-size: 17px;
-		}
-
-		@include media-breakpoint-up(lg) {
-			font-size: 18px;
-		}
-
-		@include media-breakpoint-up(xl) {
-			font-size: 19px;
+			font-size: 20px;
 		}
 
 		&:hover {
@@ -276,12 +270,7 @@ a, a:hover {
 		position: absolute;
 		bottom: 0px;
 		width: 100%;
-		background-color: rgba(38, 39, 44, .9);
 		padding: 20px 15px;
-		// backdrop-filter: saturate(180%) blur(2px);
-		border-bottom-left-radius: 10px;
-		border-bottom-right-radius: 10px;
-		transition: all .3s;
 
 		@include media-breakpoint-up(md) {
 			padding: 14px 20px;
@@ -465,7 +454,7 @@ a, a:hover {
 		width: 10px;
 		height: 10px;
 		border-radius: 50%;
-		background-color: #26272c;
+		background-color: $item-color;
 		transition: all .3s;
 
 		&_active {
@@ -506,7 +495,7 @@ a, a:hover {
 }
 
 .fade-enter-active{
-    transition: opacity .6s;
+    transition: opacity .3s;
 }
 
 .fade-leave-active{

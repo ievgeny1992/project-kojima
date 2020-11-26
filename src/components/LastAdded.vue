@@ -17,9 +17,9 @@
                             <h4 class="last-game__title">
                                 {{ game.name }}
                             </h4>
-                            <div class="last-game__genre mr-1"  v-for="(genre, index) in game.genres" v-bind:key="index">
+                            <!-- <div class="last-game__genre mr-1"  v-for="(genre, index) in game.genres" v-bind:key="index">
                                 {{ genre.name }}
-                            </div>
+                            </div> -->
                             <span class="last-game__date">
                                 <i class="fal fa-calendar-check"></i>
                                 {{ game.addedDate | moment("from", "now") }}
@@ -63,7 +63,7 @@ export default {
             display: flex;
             flex-direction: row;
             align-items: center;
-            background-color: #26272c;
+            background-color: $item-color;
             border-radius: 4px;
             padding: 20px 30px 20px 20px;
             transition: all .3s;
@@ -106,6 +106,7 @@ export default {
             -webkit-line-clamp: 1;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            font-weight: 700;
             margin-bottom: 0px;
             text-decoration: none;
         }
@@ -113,6 +114,7 @@ export default {
         &__cover {
             width: 70px;
             height: 70px;
+            flex: 0 0 70px;
             overflow: hidden;
             background-position: top center;
             background-repeat: no-repeat;

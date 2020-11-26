@@ -78,7 +78,7 @@ export default {
         width: 110px;
         height: 110px;
         text-align: center;
-        background-color: #26272c;
+        background-color: $item-color;
         border-radius: 10px;
 
         &_complete {

@@ -10,8 +10,8 @@
 			</div>
 
 			<GamesCounter />
-			<GenresCounter />
 			<LastAdded />
+			<GenresCounter />
 		</div>
 	</section>
 </template>

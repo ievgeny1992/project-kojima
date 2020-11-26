@@ -56,16 +56,16 @@ export default {
             max-width: 650px;
             height: 100px;
             transform: translate(-50%, -50%);
+
+			@include media-breakpoint-up(md) {
+                height: 125px;
+			}
         }
 
         &__inner {
             background-color: $bg-color;
             padding: 0px 0px 0px 20px;
             border-radius: 10px;
-
-			@include media-breakpoint-up(md) {
-                height: 125px;
-			}
         }
 
         &__text {
@@ -88,7 +88,7 @@ export default {
             font-size: 27px;
             padding: 0px;
             border: none;
-            border-left: 2px solid #26272c;
+            border-left: 2px solid $item-color;
             outline: none;
             cursor: pointer;
             transition: all .2s;
@@ -99,12 +99,12 @@ export default {
 
             &:focus {
                 outline: none !important;
-                background-color: #26272c;
+                background-color: $item-color;
             }
 
             &:hover {
                 outline: none !important;
-                background-color: #26272c;
+                background-color: $item-color;
             }
 
             &_confirm {

@@ -17,9 +17,6 @@
                             <h4 class="last-game__title">
                                 {{ game.name }}
                             </h4>
-                            <!-- <div class="last-game__genre mr-1"  v-for="(genre, index) in game.genres" v-bind:key="index">
-                                {{ genre.name }}
-                            </div> -->
                             <span class="last-game__date">
                                 <i class="fal fa-calendar-check"></i>
                                 {{ game.addedDate | moment("from", "now") }}
@@ -65,7 +62,7 @@ export default {
             align-items: center;
             background-color: $item-color;
             border-radius: 4px;
-            padding: 20px 30px 20px 20px;
+            padding: 18px;
             transition: all .3s;
             cursor: pointer;
 
@@ -136,7 +133,8 @@ export default {
         &__date {
             padding-top: 5px;
             display: block;
-            font-size: 11px;
+            font-size: 13px;
+            font-weight: 500;
             color: #b8b9be;
         }
     }

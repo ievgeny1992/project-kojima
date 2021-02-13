@@ -62,15 +62,9 @@
 				<div class="col-auto">
 					<button type="button" class="game-viewer__btn game-viewer__edit-btn mr-2">
 						<i class="fal fa-pen"></i>
-						<span>
-							Редактировать
-						</span>
 					</button>
 					<button type="button" class="game-viewer__btn game-viewer__remove-btn" @click="callDeleteDialog">
 						<i class="fal fa-trash-alt"></i>
-						<span>
-							Удалить
-						</span>
 					</button>
 				</div>
 			</div>
@@ -105,11 +99,13 @@ export default {
 		},
 
 		callDeleteDialog: function () {
-			this.confirmModal = true;
+            this.confirmModal = true;
+            document.querySelector("body").classList.add("modal_active");
 		},
 
 		cancelDeleteDialog: function () {
-			this.confirmModal = false;
+            this.confirmModal = false;
+            document.querySelector("body").classList.remove("modal_active");
 		},
 
 		deleteGame: function () {

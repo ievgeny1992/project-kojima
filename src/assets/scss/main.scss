@@ -36,6 +36,11 @@ a, a:hover {
 	background-color: $bg-color;
 }
 
+.modal_active {
+    overflow: hidden;
+    margin-right: 17px;
+}
+
 .app {
 	display: flex;
 	flex-direction: column;
@@ -257,6 +262,14 @@ a, a:hover {
 		margin: 0;
 
 		@include media-breakpoint-up(md) {
+			font-size: 18px;
+        }
+
+		@include media-breakpoint-up(lg) {
+			font-size: 18px;
+        }
+
+		@include media-breakpoint-up(xl) {
 			font-size: 20px;
 		}
 

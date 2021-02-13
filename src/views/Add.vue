@@ -1,27 +1,20 @@
 <template>
-    <section>
-        <div class="container-fluid pt-md-5 pt-3 pb-3">
-            <div class="row">
-                <div class="col">
-                    <h2>
-                        Добавить игру
-                    </h2>
-                </div>
-            </div>
-
-			<GameCreator />
-
-        </div>
-    </section>
+    <PageLayout title="Добавить игру">
+        <template v-slot:default>
+            <GameCreator />
+        </template>
+    </PageLayout>
 </template>
 
 <script>
+import PageLayout from '@/components/PageLayout.vue'
 import GameCreator from '@/components/GameCreator.vue'
 
 export default {
 	name: 'Add',
 	components: {
-		GameCreator
+        PageLayout,
+        GameCreator
 	}
 }
 </script>

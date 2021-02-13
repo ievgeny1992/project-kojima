@@ -1,31 +1,28 @@
 <template>
-	<div class="container-fluid pt-md-5 pt-3">
-		<div class="row align-items-center">
-			<div class="col">
-				<h2>
-					Игры
-				</h2>
-			</div>
+    <PageLayout title="Игры">
+        <template v-slot:header>
 			<div class="col games__count">
 				<h3>
 					<i class="fal fa-gamepad" aria-hidden="true"></i> {{ count }}
 				</h3>
 			</div>
-		</div>
-
-		<GamesViewer />
-
-	</div>
+        </template>
+        <template v-slot:default>
+            <GamesViewer />
+        </template>
+    </PageLayout>
 </template>
 
 <script>
+import PageLayout from '@/components/PageLayout.vue'
 import GamesViewer from '@/components/GamesViewer.vue'
 import axios from "axios"
 
 export default {
 	name: 'Home',
 	components: {
-		GamesViewer
+        PageLayout,
+        GamesViewer
 	},
 	data: function () {
 		return {

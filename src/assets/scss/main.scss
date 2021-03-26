@@ -224,7 +224,8 @@ a:hover {
 .games {
   &__item {
     position: relative;
-    transition: all 0.3s;
+    overflow: hidden;
+    transition: all 0.25s ease;
     cursor: pointer;
     border-radius: 8px;
 
@@ -250,6 +251,11 @@ a:hover {
     min-width: 100%;
     width: 100%;
     border-radius: 8px;
+    transition: all 0.25s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__title {

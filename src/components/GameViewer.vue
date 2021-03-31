@@ -1,9 +1,9 @@
 <template>
-  <div class="game" v-if="game">
+  <div class="game-viewer" v-if="game">
     <div class="container">
       <div class="row mt-md-5 mt-1 mb-4">
         <div class="col-12">
-          <div class="game-viewer">
+          <div class="game-viewer__inner">
             <div class="game-viewer__top">
               <img
                 class="game-viewer__img"
@@ -90,12 +90,12 @@
       </div>
       <div class="row mb-3">
         <div class="col-auto">
-          <button
+          <!-- <button
             type="button"
             class="game-viewer__btn game-viewer__edit-btn mr-2"
           >
             <i class="fal fa-pen"></i>
-          </button>
+          </button> -->
           <button
             type="button"
             class="game-viewer__btn game-viewer__remove-btn"
@@ -146,12 +146,10 @@ export default {
 
     callDeleteDialog: function() {
       this.confirmModal = true;
-      document.querySelector("body").classList.add("modal_active");
     },
 
     cancelDeleteDialog: function() {
       this.confirmModal = false;
-      document.querySelector("body").classList.remove("modal_active");
     },
 
     deleteGame: function() {
@@ -187,6 +185,10 @@ export default {
 }
 .game-viewer {
   position: relative;
+
+  &__inner {
+    position: relative;
+  }
 
   &__top {
     position: relative;

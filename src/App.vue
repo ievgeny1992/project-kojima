@@ -1,7 +1,7 @@
 <template>
   <div class="app" id="app">
     <Nav>
-      <router-link to="/" class="sidebar__button">
+      <router-link :to="{ name: 'home' }" class="sidebar__button">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path
             fill="none"
@@ -15,7 +15,7 @@
         </svg>
       </router-link>
 
-      <router-link to="/add" class="sidebar__button">
+      <router-link :to="{ name: 'add' }" class="sidebar__button">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <g
             fill="none"
@@ -32,7 +32,7 @@
         </svg>
       </router-link>
 
-      <router-link to="/info" class="sidebar__button">
+      <router-link :to="{ name: 'info' }" class="sidebar__button">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <g
             fill="none"

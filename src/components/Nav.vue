@@ -1,13 +1,11 @@
 <template>
   <aside class="sidebar pt-md-5 pt-4">
-    <div class="sidebar__avatar"></div>
+    <div class="avatar">
+      <img src="images/avatar.jpg" class="avatar__image" alt="avatar" />
+    </div>
     <nav class="sidebar__nav">
-      <div class="row">
-        <div class="col">
-          <div id="nav">
-            <slot></slot>
-          </div>
-        </div>
+      <div id="nav">
+        <slot></slot>
       </div>
     </nav>
   </aside>

@@ -42,7 +42,16 @@
                 v-bind:src="game.coverCrop"
                 v-bind:alt="game.slug"
               />
-              <div class="game__user-rating">{{ game.userRating }}/10</div>
+              <div
+                class="game__user-rating"
+                :class="{
+                  'game__user-rating_positive': game.userRating >= 7,
+                  'game__user-rating_neutral': game.userRating < 7,
+                  'game__user-rating_negative': game.userRating <= 4
+                }"
+              >
+                {{ game.userRating }}
+              </div>
             </div>
             <div class="game__bottom">
               <div class="d-flex align-items-start">

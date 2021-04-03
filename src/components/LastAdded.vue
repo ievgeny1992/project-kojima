@@ -19,10 +19,13 @@
         >
           <div class="last-game__item">
             <div class="last-game__border"></div>
-            <div
-              class="last-game__cover mr-3"
-              v-bind:style="{ backgroundImage: 'url(' + game.coverCrop + ')' }"
-            ></div>
+            <div class="last-game__cover mr-3">
+              <img
+                :src="game.coverCrop"
+                class="last-game__cover-img"
+                :alt="game.slug"
+              />
+            </div>
             <div class="last-game__content">
               <h4 class="last-game__title">
                 {{ game.name }}
@@ -83,6 +86,10 @@ export default {
       width: 4px;
       background-color: $primary-color;
     }
+
+    &:hover .last-game__cover-img {
+      transform: translate(-50%) scale(1.07);
+    }
   }
 
   &__border {
@@ -118,6 +125,7 @@ export default {
   }
 
   &__cover {
+    position: relative;
     width: 70px;
     height: 70px;
     flex: 0 0 70px;
@@ -127,6 +135,14 @@ export default {
     background-size: cover;
     border-radius: 5px;
     box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.6);
+  }
+
+  &__cover-img {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    height: 100%;
+    transition: all 0.25s ease;
   }
 
   &__genre {

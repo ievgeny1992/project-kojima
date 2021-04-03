@@ -165,14 +165,16 @@ a:hover {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  background-color: rgba(28, 27, 33, 0.8);
+  background-color: rgba(28, 27, 33, 0.95);
   backdrop-filter: saturate(120%) blur(2px);
-  padding: 10px;
+  padding: 10px 20px;
   border-radius: 8px;
+  z-index: 9999;
   @include media-breakpoint-up(md) {
     flex-direction: column;
     background-color: transparent;
     backdrop-filter: none;
+    padding: 0px;
   }
 }
 
@@ -188,8 +190,8 @@ a:hover {
 
   &__nav {
     position: fixed;
-    left: 22px;
-    width: calc(100% - 44px);
+    left: 5px;
+    width: calc(100% - 10px);
     bottom: 5px;
     margin-top: 0px;
 

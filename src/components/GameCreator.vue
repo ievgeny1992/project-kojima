@@ -51,13 +51,13 @@
             <div
               class="found-games__select-point"
               v-bind:class="{
-                'found-games__select-point_active': selectGameIndex === index,
+                'found-games__select-point_active': selectGameIndex === index
               }"
             ></div>
             <div
               class="found-games__cover mr-2"
               v-bind:style="{
-                backgroundImage: 'url(' + game.background_image + ')',
+                backgroundImage: 'url(' + game.background_image + ')'
               }"
               v-if="game.background_image"
             ></div>
@@ -189,6 +189,7 @@ export default {
       empty: null,
       currentGame: null,
       selectGameIndex: null,
+      rawgApiKey: process.env.VUE_APP_RAWG_API_KEY
     };
   },
   methods: {
@@ -199,12 +200,15 @@ export default {
         this.empty = "Введите название игры!";
       } else {
         const url =
-          "https://api.rawg.io/api/games?page_size=9&search=" + this.insertGame;
+          "https://api.rawg.io/api/games?key=" +
+          this.rawgApiKey +
+          "&page_size=9&search=" +
+          this.insertGame;
 
         axios
           .get(url)
-          .then((response) => (this.games = response.data.results))
-          .catch((error) => console.log(error));
+          .then(response => (this.games = response.data.results))
+          .catch(error => console.log(error));
       }
     },
 
@@ -213,11 +217,15 @@ export default {
       this.selectGameIndex = index;
 
       const game = this.games[index];
-      const url = "https://api.rawg.io/api/games/" + game.slug;
+      const url =
+        "https://api.rawg.io/api/games/" +
+        game.slug +
+        "?key=" +
+        this.rawgApiKey;
 
       axios
         .get(url)
-        .then((response) => {
+        .then(response => {
           this.currentGame = response.data;
           this.currentGame.my_rating = 1;
           this.currentGame.complete_flag = false;
@@ -225,7 +233,7 @@ export default {
             this.currentGame.background_image
           );
         })
-        .catch((error) => (this.error = error));
+        .catch(error => (this.error = error));
     },
 
     addGame: function() {
@@ -247,15 +255,15 @@ export default {
         completeFlag: this.currentGame.complete_flag,
         angryFlag: this.currentGame.angry_flag,
         platforms: this.currentGame.parent_platforms,
-        genres: this.currentGame.genres,
+        genres: this.currentGame.genres
       };
 
       axios
         .post(process.env.VUE_APP_SERVER_URL + "/games", addedGame)
-        .then((response) => {
+        .then(response => {
           this.added = response;
         })
-        .catch((error) => (this.error = error));
+        .catch(error => (this.error = error));
     },
 
     getCropImage: function(image) {
@@ -276,8 +284,8 @@ export default {
       this.empty = null;
       this.error = null;
       this.added = null;
-    },
-  },
+    }
+  }
 };
 </script>
 

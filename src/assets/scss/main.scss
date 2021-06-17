@@ -282,15 +282,15 @@ a:hover {
 .game {
   position: relative;
 
+  &:hover .game__img {
+    transform: scale($scale);
+  }
+
   &__img {
     min-width: 100%;
     width: 100%;
     border-radius: 8px;
     transition: all 0.25s ease;
-
-    &:hover {
-      transform: scale($scale);
-    }
   }
 
   &__title {
@@ -501,11 +501,15 @@ a:hover {
     border-radius: 8px;
     border-left: 4px solid #2a2b30;
     transition: all 0.3s;
+    transform: translateX(0);
     cursor: pointer;
 
     &:hover {
-      box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.6);
-      border-left: 7px solid #2a2b30;
+      transform: translateX(10px);
+    }
+
+    &_active {
+      transform: translateX(10px);
     }
   }
 
@@ -538,11 +542,15 @@ a:hover {
 
   &__title {
     margin: 0px;
-    font-weight: 300;
+  }
 
-    & > span {
-      font-weight: 700;
-    }
+  &__date {
+    font-weight: 300;
+  }
+
+  &__arrow {
+    position: absolute;
+    right: 10px;
   }
 }
 

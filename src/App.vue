@@ -15,6 +15,23 @@
         </svg>
       </router-link>
 
+      <router-link :to="{ name: 'search' }" class="sidebar__button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <g
+            fill="none"
+            fill-rule="evenodd"
+            stroke="#fdfcff"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+            transform="translate(2 2)"
+          >
+            <circle cx="9.767" cy="9.767" r="8.989" />
+            <path d="M16.018 16.485L19.542 20" />
+          </g>
+        </svg>
+      </router-link>
+
       <router-link :to="{ name: 'add' }" class="sidebar__button">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <g

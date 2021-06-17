@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-xl-4 col-lg-5 col-md-5 pt-3">
+    <div class="col-xl-3 col-lg-4 col-md-6 pt-3">
       <div class="search-game">
         <div class="form-group pb-3">
           <label class="search-game__label" for="name">Название игры</label>
@@ -37,23 +37,35 @@
           ><i class="fas fa-exclamation-triangle"></i> {{ error }}</span
         >
       </div>
+
+      <div class="d-flex justify-content-center d-md-none mt-2 mb-2">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3.51489 8.465L11.9999 16.95L20.4849 8.465L19.0709 7.05L11.9999 14.122L4.92889 7.05L3.51489 8.465Z"
+            fill="#fdfcff"
+          ></path>
+        </svg>
+      </div>
     </div>
 
-    <div class="col-xl-3 col-lg-4 col-md-4 pt-3">
+    <div class="col-xl-4 col-lg-4 col-md-6 pt-3">
       <transition name="fade">
         <div class="found-games" v-if="games">
           <div
             class="found-games__item mb-3"
             v-for="(game, index) in games"
             v-bind:key="index"
+            v-bind:class="{
+              'found-games__item_active': selectGameIndex === index
+            }"
             v-on:click="selectGame(index)"
           >
-            <div
-              class="found-games__select-point"
-              v-bind:class="{
-                'found-games__select-point_active': selectGameIndex === index
-              }"
-            ></div>
             <div
               class="found-games__cover mr-2"
               v-bind:style="{
@@ -61,16 +73,49 @@
               }"
               v-if="game.background_image"
             ></div>
-            <h4 class="found-games__title">
-              {{ game.name }}
-              <span class="pr-2">{{ game.released | moment("L") }}</span>
-            </h4>
+            <div class="found-games__content">
+              <h4 class="found-games__title">
+                {{ game.name }}
+              </h4>
+              <h5 class="found-games__date">
+                <i class="fal fa-calendar-alt"></i>
+                {{ game.released | moment("L") }}
+              </h5>
+            </div>
+            <div class="found-games__arrow">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.46495 20.485L16.95 12L8.46495 3.515L7.04995 4.929L14.122 12L7.04995 19.071L8.46495 20.485Z"
+                  fill="#fdfcff"
+                ></path>
+              </svg>
+            </div>
           </div>
         </div>
       </transition>
+      <div class="d-flex justify-content-center d-md-none mt-2 mb-2">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3.51489 8.465L11.9999 16.95L20.4849 8.465L19.0709 7.05L11.9999 14.122L4.92889 7.05L3.51489 8.465Z"
+            fill="#fdfcff"
+          ></path>
+        </svg>
+      </div>
     </div>
 
-    <div class="col-xl-3 col-lg-4 col-md-4 pt-3" v-if="currentGame">
+    <div class="col-xl-4 col-lg-4 col-md-6 pt-3" v-if="currentGame">
       <transition name="fade">
         <div class="found-game">
           <img
@@ -79,30 +124,9 @@
             :alt="currentGame.slug"
           />
           <div class="card-body">
-            <h4 class="pt-2">
+            <h3 class="pt-2">
               {{ currentGame.name }}
-            </h4>
-            <span
-              class="ml-1 mr-1"
-              v-for="(platform, index) in currentGame.parent_platforms"
-              v-bind:key="index"
-            >
-              <i
-                v-if="platform.platform.slug == 'xbox'"
-                class="fab fa-md fa-xbox"
-              ></i>
-              <i
-                v-if="platform.platform.slug == 'playstation'"
-                class="fab fa-md fa-playstation"
-              ></i>
-              <i
-                v-if="platform.platform.slug == 'pc'"
-                class="fab fa-md fa-windows"
-              ></i>
-            </span>
-            <p class="card-text" v-if="currentGame.metacritic">
-              Metacritic: <b>{{ currentGame.metacritic }}</b>
-            </p>
+            </h3>
             <div class="form-group">
               <label for="selectMyRating">My rating</label>
               <select
@@ -202,7 +226,7 @@ export default {
         const url =
           "https://api.rawg.io/api/games?key=" +
           this.rawgApiKey +
-          "&page_size=9&search=" +
+          "&page_size=7&search=" +
           this.insertGame;
 
         axios

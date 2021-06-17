@@ -1,37 +1,9 @@
 <template>
   <div class="games">
-    <div class="search row justify-content-end">
-      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-        <div class="search__box form-group">
-          <input
-            class="search__input form-control"
-            v-model="search"
-            placeholder="Найти игру"
-          />
-          <span class="search__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <g
-                fill="none"
-                fill-rule="evenodd"
-                stroke="#999999"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-                transform="translate(2 2)"
-              >
-                <circle cx="9.767" cy="9.767" r="8.989" />
-                <path d="M16.018 16.485L19.542 20" />
-              </g>
-            </svg>
-          </span>
-        </div>
-      </div>
-    </div>
-
     <div class="row" v-if="games">
       <div
         class="col-xl-3 col-lg-4 col-md-6 col-sm-12 pt-3 pb-3"
-        v-for="(game, index) in filtredGames"
+        v-for="(game, index) in games"
         v-bind:key="index"
       >
         <router-link :to="{ name: 'Game', params: { slug: game.slug } }">
@@ -91,13 +63,7 @@ export default {
         .then(response => (this.games = response.data));
     }
   },
-  computed: {
-    filtredGames: function() {
-      return this.games.filter(game => {
-        return game.name.toLowerCase().match(this.search.toLowerCase());
-      });
-    }
-  },
+  computed: {},
   mounted: function() {
     this.getGames();
   }

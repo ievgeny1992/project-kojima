@@ -1,7 +1,7 @@
 <template>
   <div class="game-viewer" v-if="game">
     <div class="container">
-      <div class="row mt-md-5 mt-1 mb-4">
+      <div class="row mt-md-5 mt-1 mb-md-4 mb-2">
         <div class="col-12">
           <div class="game-viewer__inner">
             <div class="game-viewer__top">
@@ -15,47 +15,46 @@
               </span>
             </div>
             <div class="game-viewer__bottom mt-2 mt-md-0">
-              <h1 class="game-viewer__title">
-                {{ game.name }}
-              </h1>
               <div class="row justify-content-between align-items-center mb-3">
                 <div class="col-auto">
+                  <h1 class="game-viewer__title">
+                    {{ game.name }}
+                  </h1>
                   <span
                     v-for="(platforms, index) in game.platforms"
                     v-bind:key="index"
                   >
                     <i
                       v-if="platforms.platform.slug == 'xbox'"
-                      class="ml-1 mr-1 fab game-viewer__platform fa-md fa-xbox"
+                      class="mr-2 fab game-viewer__platform fa-md fa-xbox"
                     ></i>
                     <i
                       v-if="platforms.platform.slug == 'playstation'"
-                      class="ml-1 mr-1 fab game-viewer__platform fa-md fa-playstation"
+                      class="mr-2 fab game-viewer__platform fa-md fa-playstation"
                     ></i>
                     <i
                       v-if="platforms.platform.slug == 'pc'"
-                      class="ml-1 mr-1 fab game-viewer__platform fa-md fa-windows"
+                      class="mr-2 fab game-viewer__platform fa-md fa-windows"
                     ></i>
                     <i
                       v-if="platforms.platform.slug == 'linux'"
-                      class="ml-1 mr-1 fab game-viewer__platform fa-md fa-linux"
+                      class="mr-2 fab game-viewer__platform fa-md fa-linux"
                     ></i>
                     <i
                       v-if="platforms.platform.slug == 'mac'"
-                      class="ml-1 mr-1 fab game-viewer__platform fa-md fa-apple"
+                      class="mr-2 fab game-viewer__platform fa-md fa-apple"
                     ></i>
                     <i
                       v-if="platforms.platform.slug == 'nintendo'"
-                      class="ml-1 mr-1 fab game-viewer__platform fa-md fa-nintendo-switch"
+                      class="mr-2 fab game-viewer__platform fa-md fa-nintendo-switch"
                     ></i>
                   </span>
-                </div>
-                <div class="col-auto">
                   <span class="game-viewer__date">
                     <i class="fal fa-calendar-alt mr-1"></i>
                     {{ game.releasedDate | moment("L") }}
                   </span>
                 </div>
+                <div class="col-auto"></div>
               </div>
               <div class="row">
                 <div class="col">
@@ -292,11 +291,8 @@ export default {
   &__content {
     padding: 0px;
     border-radius: 10px;
-
-    @include media-breakpoint-up(md) {
-      padding: 18px 20px;
-      background-color: $item-color;
-    }
+    padding: 18px 20px;
+    background-color: $item-color;
   }
 
   &__description {

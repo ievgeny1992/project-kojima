@@ -88,7 +88,7 @@ export default {
     }
 
     &:hover .last-game__cover-img {
-      transform: translate(-50%) scale(1.07);
+      transform: translate(-50%) scale($scale);
     }
   }
 

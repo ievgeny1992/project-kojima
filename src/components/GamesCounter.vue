@@ -45,8 +45,8 @@ export default {
   name: "GamesCounter",
   data: function() {
     return {
-      countAllGames: null,
-      countCompleteGames: null
+      countAllGames: Number,
+      countCompleteGames: Number
     };
   },
   methods: {

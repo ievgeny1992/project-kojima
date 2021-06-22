@@ -125,7 +125,7 @@ export default {
   name: "GameViewer",
   data: function() {
     return {
-      game: null,
+      game: Object,
       confirmModal: false
     };
   },

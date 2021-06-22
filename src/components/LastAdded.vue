@@ -49,7 +49,7 @@ export default {
   name: "LastAdded",
   data: function() {
     return {
-      games: null
+      games: Object
     };
   },
   methods: {

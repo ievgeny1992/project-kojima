@@ -52,8 +52,7 @@ export default {
   name: "GamesViewer",
   data: function() {
     return {
-      games: null,
-      search: ""
+      games: Array
     };
   },
   methods: {

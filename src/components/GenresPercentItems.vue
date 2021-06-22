@@ -23,14 +23,14 @@
 import axios from "axios";
 
 export default {
-  name: "GenresPercent",
+  name: "GenresPercentItems",
   props: {
-    genre: null
+    genre: String
   },
   data: function() {
     return {
-      count: null,
-      genreCount: null
+      count: Number,
+      genreCount: Number
     };
   },
   methods: {

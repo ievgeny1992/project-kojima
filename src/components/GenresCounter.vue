@@ -150,8 +150,7 @@ export default {
         "#daf7e1",
         "#d23b5b",
         "#b1dfdb"
-      ],
-      test: Array
+      ]
     };
   },
   methods: {
@@ -164,17 +163,10 @@ export default {
     setCurrentType: function(type) {
       this.currentType = type;
       VueCookies.set("type", type);
-    },
-
-    getTest: function() {
-      axios
-        .get(process.env.VUE_APP_SERVER_URL + "/games/genresV2")
-        .then(response => (this.test = response.data));
     }
   },
   mounted: function() {
     this.getGenres();
-    this.getTest();
   }
 };
 </script>

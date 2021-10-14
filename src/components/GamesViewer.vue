@@ -1,6 +1,6 @@
 <template>
   <div class="games">
-    <div class="row" v-if="games">
+    <div class="row" v-if="games.length !== 0">
       <div
         class="col-xl-3 col-lg-4 col-md-6 col-sm-12 pt-3 pb-3"
         v-for="(game, index) in games"
@@ -42,14 +42,21 @@
         </router-link>
       </div>
     </div>
+    <div v-else>
+      <EmptyGamesList />
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import EmptyGamesList from "@/components/EmptyGamesList.vue";
 
 export default {
   name: "GamesViewer",
+  components: {
+    EmptyGamesList
+  },
   data: function() {
     return {
       games: Array

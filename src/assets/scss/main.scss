@@ -564,7 +564,7 @@ a:hover {
     border-radius: 8px;
   }
 }
-
+//Fade animation
 .fade-enter-active {
   transition: opacity 0.3s;
 }
@@ -577,23 +577,43 @@ a:hover {
 .fade-leave-to {
   opacity: 0;
 }
+//Fade animation
 
-@-webkit-keyframes rebound {
-  0% {
-    -webkit-transform: scale(0.8);
+//Slide animation
+.slide-fade-enter-active {
+  transition: all 0.3s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter,
+.slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
+//Slide animation
+
+//Rebound animation
+.rebound-enter-active {
+  transition: all 0.25s ease;
+
+  & .modal__window {
+    animation: rebound 0.4s;
+  }
+}
+.rebound-leave-active {
+  transition: all 0.15s ease;
+
+  & .modal__window {
+    transition: all 0.15s ease;
+  }
+}
+
+.rebound-enter,
+.rebound-leave-to {
+  opacity: 0;
+  & .modal__window {
     transform: scale(0.8);
-  }
-  40% {
-    -webkit-transform: scale(1.08);
-    transform: scale(1.08);
-  }
-  80% {
-    -webkit-transform: scale(0.98);
-    transform: scale(0.98);
-  }
-  to {
-    -webkit-transform: scale(1);
-    transform: scale(1);
   }
 }
 
@@ -615,43 +635,6 @@ a:hover {
     transform: scale(1);
   }
 }
-
-@-webkit-keyframes reboundClick {
-  0% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-  40% {
-    -webkit-transform: scale(1.05);
-    transform: scale(1.05);
-  }
-  80% {
-    -webkit-transform: scale(0.96);
-    transform: scale(0.96);
-  }
-  to {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-}
-
-@keyframes reboundClick {
-  0% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-  40% {
-    -webkit-transform: scale(1.05);
-    transform: scale(1.05);
-  }
-  80% {
-    -webkit-transform: scale(0.96);
-    transform: scale(0.96);
-  }
-  to {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-}
+//Rebound animation
 
 @import "media"; // Always at the end

@@ -2,20 +2,15 @@
   <div class="modal">
     <div class="modal__window">
       <div class="modal__inner row align-items-center no-gutters">
-        <div class="col-7">
+        <button class="modal__button_close" @click="onCancel">
+          <i class="far fa-times"></i>
+        </button>
+        <div class="col-9">
           <p class="modal__text">Удалить {{ name }}?</p>
         </div>
         <div class="col">
-          <button
-            class="modal__button modal__button_confirm"
-            @click="onConfirm"
-          >
-            <i class="far fa-check"></i>
-          </button>
-        </div>
-        <div class="col">
-          <button class="modal__button modal__button_cancel" @click="onCancel">
-            <i class="far fa-times"></i>
+          <button class="modal__button modal__button_delete" @click="onConfirm">
+            <i class="far fa-trash-alt"></i>
           </button>
         </div>
       </div>
@@ -25,8 +20,8 @@
 
 <script>
 export default {
-  name: "ModalConfirm",
-  props: ["name"],
+  name: "ModalWindow",
+  props: ["name", "show"],
   methods: {
     onConfirm() {
       this.$emit("confirm");
@@ -45,26 +40,32 @@ export default {
   left: 0;
   bottom: 0;
   right: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
   background: rgba(51, 50, 55, 0.8);
-  backdrop-filter: saturate(280%) blur(5px);
+  backdrop-filter: saturate(180%) blur(15px);
   z-index: 9999;
 
   &__window {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 96%;
+    position: relative;
+    width: 90%;
     max-width: 650px;
     height: 100px;
-    transform: translate(-50%, -50%);
-
+    margin: auto;
     @include media-breakpoint-up(md) {
       height: 125px;
     }
   }
 
   &__inner {
-    background-color: $bg-color;
+    position: relative;
+    background-color: $bg-modal-color;
     padding: 0px 0px 0px 20px;
     border-radius: 10px;
   }
@@ -86,7 +87,7 @@ export default {
     width: 100%;
     height: 100px;
     color: #fff;
-    font-size: 27px;
+    font-size: 24px;
     padding: 0px;
     border: none;
     border-left: 2px solid $item-color;
@@ -108,18 +109,46 @@ export default {
       background-color: $item-color;
     }
 
-    &_confirm {
-      & > .far {
-        color: #4c8c33;
+    &_delete {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      & > i {
+        color: #c94052;
       }
     }
 
-    &_cancel {
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
+    &_close {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      top: -6px;
+      left: -6px;
+      border: 0;
+      border-radius: 12px;
+      background-color: $bg-modal-color;
+      box-shadow: 5px 5px 20px 0 rgba(0, 0, 0, 0.2);
+      transition: all 0.25s ease;
+      outline: none;
+      list-style: none;
+      cursor: pointer;
+      z-index: 200;
 
-      & > .far {
-        color: #c94052;
+      & > i {
+        color: #fff;
+        opacity: 0.7;
+        font-size: 17px;
+      }
+
+      &:hover {
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+        transform: translate(2px, 2px);
+      }
+
+      &:focus {
+        outline: none !important;
       }
     }
   }

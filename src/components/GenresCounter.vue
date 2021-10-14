@@ -98,13 +98,12 @@
         </div>
       </div>
     </transition>
-    {{ test }}
   </section>
 </template>
 
 <script>
-import VueCookies from "vue-cookies";
 import axios from "axios";
+import VueCookies from "vue-cookies";
 import GenresPercentItems from "@/components/GenresPercentItems.vue";
 import GenresPercentLine from "@/components/GenresPercentLine.vue";
 import GenresPercentTag from "@/components/GenresPercentTag.vue";

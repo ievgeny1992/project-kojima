@@ -48,8 +48,8 @@ export default {
   max-height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
-  background: rgba(51, 50, 55, 0.8);
-  backdrop-filter: saturate(180%) blur(15px);
+  background: rgba(51, 50, 55, 0.98);
+  // backdrop-filter: saturate(180%) blur(15px);
   z-index: 9999;
 
   &__window {

@@ -162,7 +162,7 @@ export default {
 
     setCurrentType: function(type) {
       this.currentType = type;
-      VueCookies.set("type", type);
+      VueCookies.set("type", type, "0");
     }
   },
   mounted: function() {

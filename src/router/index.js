@@ -1,41 +1,47 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from "vue";
+import VueRouter from "vue-router";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
-	{
-		path: '/',
-		name: 'home',
-		component: () => import("@/views/Home")
-	},
-	{
-		path: '/search',
-		name: 'search',
-		component: () => import("@/views/Search")
-	},
-	{
-		path: '/add',
-		name: 'add',
-		component: () => import("@/views/Add")
-	},
-	{
-		path: '/info',
-		name: 'info',
-		component: () => import("@/views/Info")
-	},
-	{
-		path: '/game/:slug',
-		name: 'Game',
-		component: () => import("@/views/Game"),
-		props: true
-	}
-]
+  {
+    path: "/",
+    name: "home",
+    component: () => import("@/views/Home")
+  },
+  {
+    path: "/search",
+    name: "search",
+    component: () => import("@/views/Search")
+  },
+  {
+    path: "/add",
+    name: "add",
+    component: () => import("@/views/Add")
+  },
+  {
+    path: "/info",
+    name: "info",
+    component: () => import("@/views/Info")
+  },
+  {
+    path: "/game/:slug",
+    name: "Game",
+    component: () => import("@/views/Game"),
+    props: true
+  },
+  {
+    path: "/timeline",
+    name: "timeline",
+    component: () => import("@/views/Timeline"),
+    props: true
+  }
+];
 
 const router = new VueRouter({
-	mode: 'hash',
-	base: process.env.BASE_URL,
-	routes
-})
+  mode: "hash",
+  base: process.env.BASE_URL,
+  routes
+});
 
-export default router
+export default router;

@@ -37,7 +37,7 @@ export default {
   },
   computed: {
     getPercent: function() {
-      return Math.round((this.genreCount * 100) / this.count);
+      return Math.ceil((this.genreCount * 100) / this.count);
     }
   },
   mounted: function() {

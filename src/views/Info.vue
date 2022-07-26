@@ -3,7 +3,7 @@
     <div class="row align-items-center">
       <div class="col">
         <h2>
-          Информация
+          Статистика
         </h2>
       </div>
     </div>

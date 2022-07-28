@@ -7,14 +7,12 @@
       class="game-card__link"
     >
       <div class="game-card__item">
-        <div class="game-card__border"></div>
-        <div class="game-card__cover mr-3">
-          <img
-            :src="game.coverCrop"
-            class="game-card__cover-img"
-            :alt="game.slug"
-          />
-        </div>
+        <img
+          :src="game.coverCrop"
+          class="game-card__cover-img"
+          :alt="game.slug"
+        />
+        <div class="game-card__overlay"></div>
         <div class="game-card__content">
           <h4 class="game-card__title">
             {{ game.name }}
@@ -48,9 +46,11 @@ export default {
     flex-direction: row;
     align-items: center;
     background-color: $item-color;
-    border-radius: 4px;
-    padding: 18px;
+    border-radius: 7px;
+    padding: 25px 18px;
     transition: all 0.3s;
+    overflow: hidden;
+    box-sizing: border-box;
     cursor: pointer;
 
     &:hover {
@@ -63,8 +63,20 @@ export default {
     }
 
     &:hover .game-card__cover-img {
-      transform: translate(-50%) scale($scale);
+      transform: scale($scale);
     }
+  }
+
+  &__content {
+    position: relative;
+  }
+
+  &__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    background: rgba(41, 41, 51, 0.5);
   }
 
   &__border {
@@ -99,24 +111,10 @@ export default {
     text-decoration: none;
   }
 
-  &__cover {
-    position: relative;
-    width: 70px;
-    height: 70px;
-    flex: 0 0 70px;
-    overflow: hidden;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 5px;
-    box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.6);
-  }
-
   &__cover-img {
     position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    height: 100%;
+    left: 0px;
+    width: 100%;
     transition: all 0.25s ease;
   }
 

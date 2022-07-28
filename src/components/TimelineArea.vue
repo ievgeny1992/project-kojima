@@ -173,7 +173,7 @@ export default {
     font-size: 14px;
     font-weight: 700;
     background-color: #292933;
-    border-radius: 4px;
+    border-radius: 7px;
     padding: 5px 18px;
 
     @include media-breakpoint-up(md) {

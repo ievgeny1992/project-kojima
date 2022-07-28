@@ -23,7 +23,7 @@
               <div class="timeline-pin"></div>
               <div class="col-12">
                 <span class="timeline-date">
-                  <i class="fal fa-calendar"></i>
+                  <i class="fal fa-calendar-alt"></i>
                   {{
                     (item._id.month + "." + item._id.day) | moment("DD.MM")
                   }}</span
@@ -84,10 +84,14 @@ export default {
   }
 
   &-year {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 700;
     margin-bottom: 0px;
     padding: 25px 5px 25px 25px;
+
+    @include media-breakpoint-up(md) {
+      font-size: 30px;
+    }
 
     &__pin {
       position: absolute;
@@ -108,7 +112,7 @@ export default {
         border-radius: 50%;
         background-color: #fe1453;
         content: "";
-        right: 19px;
+        right: 19.5px;
         z-index: 5;
       }
 
@@ -166,11 +170,15 @@ export default {
   }
 
   &-date {
-    font-size: 17px;
+    font-size: 14px;
     font-weight: 700;
     background-color: #292933;
     border-radius: 4px;
-    padding: 8px 18px;
+    padding: 5px 18px;
+
+    @include media-breakpoint-up(md) {
+      font-size: 17px;
+    }
   }
 
   &-content {

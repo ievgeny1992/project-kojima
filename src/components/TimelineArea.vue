@@ -140,14 +140,14 @@ export default {
 
     &::before {
       position: absolute;
-      width: 12px;
-      height: 12px;
+      width: 16px;
+      height: 16px;
       border: 3px solid #212129;
       border-radius: 50%;
       background-color: #fe1453;
       content: "";
       top: 31px;
-      right: 26px;
+      right: 24px;
       z-index: 5;
     }
 

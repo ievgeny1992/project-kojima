@@ -1,6 +1,6 @@
 <template>
   <div
-    class="game-card col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mt-md-3 mb-md-3 mt-2 mb-2"
+    class="game-card col-xl-2 col-lg-3 col-md-6 col-sm-6 col-12 mt-md-3 mb-md-3 mt-2 mb-2"
   >
     <router-link
       :to="{ name: 'Game', params: { slug: game.slug } }"
@@ -47,7 +47,7 @@ export default {
     align-items: center;
     background-color: $item-color;
     border-radius: 7px;
-    padding: 25px 18px;
+    padding: 28px 18px;
     transition: all 0.3s;
     overflow: hidden;
     box-sizing: border-box;
@@ -55,11 +55,6 @@ export default {
 
     &:hover {
       box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.6);
-    }
-
-    &:hover > .game-card__border {
-      width: 4px;
-      background-color: $primary-color;
     }
 
     &:hover .game-card__cover-img {
@@ -76,19 +71,7 @@ export default {
     width: 100%;
     height: 100%;
     left: 0px;
-    background: rgba(41, 41, 51, 0.5);
-  }
-
-  &__border {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    height: 100%;
-    width: 4px;
-    background-color: #2a2b30;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    transition: all 0.3s;
+    background: rgba(0, 0, 0, 0.7);
   }
 
   &__link {
@@ -116,16 +99,6 @@ export default {
     left: 0px;
     width: 100%;
     transition: all 0.25s ease;
-  }
-
-  &__genre {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 2px 5px;
-    background-color: #1c1b21;
-    border-radius: 4px;
-    margin-right: 3px;
   }
 
   &__date {

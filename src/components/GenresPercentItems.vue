@@ -1,62 +1,45 @@
 <template>
-  <div class="genre__item">
-    <div class="row justify-content-between">
-      <div class="col-auto">
-        <span class="genre__title">
-          <i class="far fa-bookmark"></i> {{ genre }}
-        </span>
+  <div class="row">
+    <div
+      class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 mt-md-3 mb-md-3 mt-2 mb-2"
+      v-for="(genre, index) in genres"
+      v-bind:key="index"
+    >
+      <div class="genre__item">
+        <div class="row justify-content-between">
+          <div class="col-auto">
+            <span class="genre__title">
+              <i class="far fa-bookmark"></i> {{ genre._id }}
+            </span>
+          </div>
+          <div class="col">
+            <div class="genre__percent">{{ getPrecent(genre.percent) }}%</div>
+          </div>
+        </div>
+        <div class="genre__progress-bar mt-3 mb-3">
+          <div
+            class="genre__progress-bar_load"
+            v-bind:style="{ width: getPrecent(genre.percent) + '%' }"
+          ></div>
+        </div>
       </div>
-      <div class="col">
-        <div class="genre__percent">{{ getPercent }}%</div>
-      </div>
-    </div>
-    <div class="genre__progress-bar mt-3 mb-3">
-      <div
-        class="genre__progress-bar_load"
-        v-bind:style="{ width: getPercent + '%' }"
-      ></div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   name: "GenresPercentItems",
   props: {
-    genre: String
-  },
-  data: function() {
-    return {
-      count: Number,
-      genreCount: Number
-    };
+    genres: Array
   },
   methods: {
-    getGenresCount: function() {
-      axios
-        .get(process.env.VUE_APP_SERVER_URL + "/games/genres-count")
-        .then(response => (this.count = response.data));
-    },
+    getPrecent: function(count) {
+      return Math.ceil(count);
+    }
+  },
 
-    getGenreCount: function() {
-      axios
-        .get(
-          process.env.VUE_APP_SERVER_URL + "/games/genres-count/" + this.genre
-        )
-        .then(response => (this.genreCount = response.data));
-    }
-  },
-  computed: {
-    getPercent: function() {
-      return Math.ceil((this.genreCount * 100) / this.count);
-    }
-  },
-  mounted: function() {
-    this.getGenresCount();
-    this.getGenreCount();
-  }
+  mounted: function() {}
 };
 </script>
 

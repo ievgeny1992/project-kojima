@@ -58,43 +58,14 @@
         </button>
       </div>
     </div>
-    <transition name="fade">
-      <div class="row" v-if="currentType == 'items'">
-        <div
-          class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 mt-md-3 mb-md-3 mt-2 mb-2"
-          v-for="(genre, index) in genres"
-          v-bind:key="index"
-        >
-          <GenresPercentItems :genre="genre" />
-        </div>
-      </div>
+    <transition name="fade" v-if="currentType == 'items'">
+      <GenresPercentItems :genres="genres" />
     </transition>
 
     <transition name="fade">
       <div class="row" v-if="currentType == 'line'">
         <div class="col-12">
-          <div class="genres col mt-md-3 mb-md-3 mt-2 mb-2">
-            <div class="row">
-              <div class="genres__lines">
-                <GenresPercentLine
-                  :color="colors[index]"
-                  :genre="genre"
-                  v-for="(genre, index) in genres"
-                  v-bind:key="index"
-                />
-              </div>
-            </div>
-            <div class="row">
-              <div class="genres__tags">
-                <GenresPercentTag
-                  :color="colors[index]"
-                  :genre="genre"
-                  v-for="(genre, index) in genres"
-                  v-bind:key="index"
-                />
-              </div>
-            </div>
-          </div>
+          <GenresPercentLine :genres="genres" />
         </div>
       </div>
     </transition>
@@ -106,14 +77,12 @@ import axios from "axios";
 import VueCookies from "vue-cookies";
 import GenresPercentItems from "@/components/GenresPercentItems.vue";
 import GenresPercentLine from "@/components/GenresPercentLine.vue";
-import GenresPercentTag from "@/components/GenresPercentTag.vue";
 
 export default {
   name: "GenresCounter",
   components: {
     GenresPercentItems,
-    GenresPercentLine,
-    GenresPercentTag
+    GenresPercentLine
   },
   data: function() {
     return {
@@ -177,21 +146,6 @@ export default {
   background-color: #292933;
   border-radius: 4px;
 
-  &__lines {
-    display: flex;
-    flex: 0 0 100%;
-    max-width: 100%;
-    padding: 45px 20px 35px 20px;
-  }
-
-  &__tags {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    flex: 0 0 100%;
-    max-width: 100%;
-    padding: 0px 20px 20px 20px;
-  }
   &__buttom {
     background-color: transparent;
     border: none;
@@ -204,6 +158,10 @@ export default {
     padding: 9px;
     border-radius: 10px;
     opacity: 0.5;
+
+    & > svg {
+      vertical-align: baseline;
+    }
 
     &_active {
       opacity: 1;

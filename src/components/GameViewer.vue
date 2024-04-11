@@ -1,7 +1,7 @@
 <template>
   <div class="game-viewer" v-if="game">
     <div class="container">
-      <div class="row mt-md-5 mt-1 mb-md-4 mb-2">
+      <div class="row mt-md-5 mt-1 mb-md-3 mb-2">
         <div class="col-12">
           <div class="game-viewer__inner">
             <div class="game-viewer__top">
@@ -15,48 +15,15 @@
               </span>
             </div>
             <div class="game-viewer__bottom mt-2 mt-md-0">
-              <div class="row justify-content-between align-items-center mb-3">
+              <div class="row justify-content-between align-items-center">
                 <div class="col-auto">
                   <h1 class="game-viewer__title">
                     {{ game.name }}
                   </h1>
-                  <!-- <span
-                    v-for="(platforms, index) in game.platforms"
-                    v-bind:key="index"
-                  >
-                    <i
-                      v-if="platforms.platform.slug == 'xbox'"
-                      class="mr-2 fab game-viewer__platform fa-md fa-xbox"
-                    ></i>
-                    <i
-                      v-if="platforms.platform.slug == 'playstation'"
-                      class="mr-2 fab game-viewer__platform fa-md fa-playstation"
-                    ></i>
-                    <i
-                      v-if="platforms.platform.slug == 'pc'"
-                      class="mr-2 fab game-viewer__platform fa-md fa-windows"
-                    ></i>
-                    <i
-                      v-if="platforms.platform.slug == 'linux'"
-                      class="mr-2 fab game-viewer__platform fa-md fa-linux"
-                    ></i>
-                    <i
-                      v-if="platforms.platform.slug == 'mac'"
-                      class="mr-2 fab game-viewer__platform fa-md fa-apple"
-                    ></i>
-                    <i
-                      v-if="platforms.platform.slug == 'nintendo'"
-                      class="mr-2 fab game-viewer__platform fa-md fa-nintendo-switch"
-                    ></i>
-                  </span> -->
-                  <!-- <span class="game-viewer__date">
-                    <i class="fal fa-calendar-alt mr-1"></i>
-                    {{ game.releasedDate | moment("L") }}
-                  </span> -->
                 </div>
                 <div class="col-auto"></div>
               </div>
-              <div class="row">
+              <div class="row align-items-end">
                 <div class="col">
                   <div
                     class="game-viewer__genre mr-2"
@@ -66,11 +33,32 @@
                     {{ genre.name }}
                   </div>
                 </div>
+
+                <div class="col">
+                  <div class="row justify-content-end">
+                    <div class="col-auto">
+                      <button
+                        type="button"
+                        class="game-viewer__btn game-viewer__edit-btn mr-2"
+                      >
+                        <i class="fal fa-pen"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="game-viewer__btn game-viewer__remove-btn"
+                        @click="callDeleteDialog"
+                      >
+                        <i class="far fa-trash-alt"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
       <div
         class="row game-viewer__content no-gutters mb-4"
         v-if="game.description"
@@ -85,23 +73,6 @@
               <source v-bind:src="game.video" type="video/mp4" />
             </video>
           </vue-plyr>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-auto">
-          <button
-            type="button"
-            class="game-viewer__btn game-viewer__edit-btn mr-2"
-          >
-            <i class="fal fa-pen"></i>
-          </button>
-          <button
-            type="button"
-            class="game-viewer__btn game-viewer__remove-btn"
-            @click="callDeleteDialog"
-          >
-            <i class="far fa-trash-alt"></i>
-          </button>
         </div>
       </div>
     </div>
@@ -206,8 +177,7 @@ export default {
       bottom: 0px;
       width: 100%;
       padding: 30px 20px;
-      backdrop-filter: saturate(280%) blur(5px);
-      background-color: rgba(38, 39, 44, 0.8);
+      background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.95));
       border-top-left-radius: 0px;
       border-top-right-radius: 0px;
     }
@@ -222,11 +192,11 @@ export default {
     font-size: 20px;
 
     @include media-breakpoint-up(md) {
-      font-size: 23px;
+      font-size: 25px;
     }
 
     @include media-breakpoint-up(lg) {
-      font-size: 25px;
+      font-size: 27px;
     }
   }
 
@@ -243,9 +213,8 @@ export default {
     font-weight: 700;
     text-align: center;
     color: $text;
-    border: 2px solid;
-    border-radius: 12px;
     border: none;
+    border-radius: 12px;
     background-color: rgba(28, 27, 33, 0.5);
     backdrop-filter: saturate(120%) blur(4px);
     box-sizing: border-box;
@@ -315,7 +284,8 @@ export default {
     display: inline-block;
     font-weight: 700;
     padding: 4px 9px;
-    background-color: #181818;
+    background-color: rgba(28, 27, 33, 0.6);
+    backdrop-filter: saturate(250%) blur(5px);
     border-radius: 8px;
     font-size: 12px;
 
@@ -336,13 +306,20 @@ export default {
   }
 
   &__btn {
-    width: 53px;
-    height: 53px;
+    width: 43px;
+    height: 43px;
     cursor: pointer;
-    background-color: $item-color;
-    border: 2px $item-color solid;
+    box-sizing: border-box;
+    background-color: rgba(28, 27, 33, 0.6);
+    backdrop-filter: saturate(250%) blur(5px);
+    border: none;
     border-radius: 14px;
-    transition: all 0.25s ease;
+    transition: transform 0.25s ease;
+
+    @include media-breakpoint-up(md) {
+      width: 53px;
+      height: 53px;
+    }
 
     & > span {
       display: none;

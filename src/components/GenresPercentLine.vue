@@ -1,7 +1,7 @@
 <template>
   <div class="genres col mt-md-3 mb-md-3 mt-2 mb-2">
     <div class="row">
-      <div class="genres__lines" :class="{ genres__lines_hover: hover }">
+      <div class="genres__lines">
         <div
           class="genre"
           v-for="(genre, index) in genres"
@@ -10,6 +10,7 @@
             backgroundColor: colors[index],
             width: getPrecent(genre.percent) + '%'
           }"
+          :title="genre._id + ' ' + getPrecent(genre.percent) + '%'"
           @mouseover="$event.target.classList.toggle('genre_active')"
           @mouseleave="$event.target.classList.toggle('genre_active')"
         ></div>
@@ -82,6 +83,7 @@ export default {
   }
 }
 .genre {
+  cursor: pointer;
   height: 11px;
   &:first-child {
     border-top-left-radius: 3px;
@@ -89,8 +91,8 @@ export default {
   }
 
   &_active {
-    &:hover :not(.genre_active) {
-      background-color: #000 !important;
+    &:hover {
+      box-shadow: rgba(255, 255, 255, 0.3) 0px 0px 10px;
     }
   }
 

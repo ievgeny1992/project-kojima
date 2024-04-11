@@ -141,8 +141,8 @@ a:hover {
 
 .avatar {
   display: none;
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   overflow: hidden;
   border-radius: 35%;
 
@@ -165,8 +165,8 @@ a:hover {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  background-color: rgba(28, 27, 33, 0.95);
-  backdrop-filter: saturate(120%) blur(2px);
+  background-color: rgba(28, 27, 33, 0.8);
+  backdrop-filter: saturate(180%) blur(3px);
   padding: 10px 20px;
   border-radius: 8px;
   z-index: 9999;
@@ -454,7 +454,7 @@ a:hover {
   }
 }
 
-.search-game {
+.search-form {
   padding: 30px 20px;
   background-color: $item-color;
   border-radius: 8px;
@@ -479,6 +479,11 @@ a:hover {
     outline: none;
   }
 
+  &__button {
+    // border-radius: 12px;
+    font-size: 17px;
+  }
+
   &__message {
     &_error {
       color: #db1a20;
@@ -492,24 +497,45 @@ a:hover {
 .found-games {
   &__item {
     position: relative;
+    height: 90px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 15px;
+    box-sizing: border-box;
+    padding: 30px 15px;
     background-color: $item-color;
     border-radius: 8px;
-    border-left: 4px solid #2a2b30;
-    transition: all 0.3s;
+    transition: transform 0.3s;
     transform: translateX(0);
+    overflow: hidden;
     cursor: pointer;
 
-    &:hover {
-      transform: translateX(10px);
-    }
+    // &:hover {
+    //   transform: translateX(10px);
+    // }
 
     &_active {
-      transform: translateX(10px);
+      border: 2px solid #093;
     }
+
+    &_active > .found-games__background {
+      transform: scale(1.1);
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  &__background {
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    transition: all 0.25s ease;
   }
 
   &__select-point {
@@ -528,15 +554,8 @@ a:hover {
     }
   }
 
-  &__cover {
-    width: 50px;
-    height: 50px;
-    overflow: hidden;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 5px;
-    box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.6);
+  &__content {
+    position: relative;
   }
 
   &__title {
@@ -546,21 +565,34 @@ a:hover {
   &__date {
     font-weight: 300;
   }
-
-  &__arrow {
-    position: absolute;
-    right: 10px;
-  }
 }
 
 .found-game {
-  padding: 15px;
+  position: relative;
   background-color: $item-color;
   border-radius: 8px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center center;
 
   &__img {
-    max-width: 100%;
-    border-radius: 8px;
+    height: 100%;
+    position: absolute;
+    left: 0%;
+  }
+
+  &__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: saturate(120%) blur(6px);
+  }
+
+  &__body {
+    position: relative;
+    padding: 15px;
   }
 }
 //Fade animation

@@ -1,60 +1,54 @@
 <template>
   <div class="row">
-    <div class="col-xl-3 col-lg-4 col-md-6 pt-3">
-      <div class="search-game">
+    <div
+      class="col-xl-3 col-lg-4 col-md-6 pt-3 order-lg-1 order-md-1 order-sm-1 order-1"
+    >
+      <div class="search-form">
         <div class="form-group pb-3">
-          <label class="search-game__label" for="name">Название игры</label>
+          <!-- <label class="search-form__label" for="name">Название игры</label> -->
           <input
-            class="search-game__input form-control"
+            class="search-form__input form-control"
             name="name"
             type="text"
+            placeholder="Название"
             v-model="insertGame"
             @keyup.enter="searchGame"
           />
 
           <div class="mt-3 alert alert-danger" role="alert" v-if="empty">
-            <span class="search-game__message_error"
+            <span class="search-form__message_error"
               ><i class="fas fa-exclamation-triangle"></i> {{ empty }}</span
             >
           </div>
         </div>
         <button
           type="button"
-          class="btn btn-outline-primary"
+          class="btn search-form__button btn-primary"
           @click="searchGame"
         >
-          <i class="fal fa-search"></i>
+          <!-- <i class="fal fa-search"></i> -->
           Найти
         </button>
-        <button type="button" class="btn btn-outline-danger" @click="clearData">
-          <i class="fal fa-trash-alt"></i>
+        <button
+          type="button"
+          class="btn search-form__button btn-danger"
+          @click="clearData"
+        >
+          <!-- <i class="fal button-icon fa-trash-alt"></i> -->
           Очистить
         </button>
       </div>
 
       <div class="mt-3 alert alert-danger" role="alert" v-if="error">
-        <span class="search-game__message_error"
+        <span class="search-form__message_error"
           ><i class="fas fa-exclamation-triangle"></i> {{ error }}</span
         >
       </div>
-
-      <div class="d-flex justify-content-center d-md-none mt-2 mb-2">
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M3.51489 8.465L11.9999 16.95L20.4849 8.465L19.0709 7.05L11.9999 14.122L4.92889 7.05L3.51489 8.465Z"
-            fill="#fdfcff"
-          ></path>
-        </svg>
-      </div>
     </div>
 
-    <div class="col-xl-4 col-lg-4 col-md-6 pt-3">
+    <div
+      class="col-xl-3 col-lg-3 col-md-6 pt-3 order-lg-2 order-md-3 order-sm-3 order-3"
+    >
       <transition name="fade">
         <div class="found-games" v-if="games">
           <div
@@ -66,69 +60,45 @@
             }"
             v-on:click="selectGame(index)"
           >
-            <div
-              class="found-games__cover mr-2"
-              v-bind:style="{
-                backgroundImage: 'url(' + game.background_image + ')'
-              }"
-              v-if="game.background_image"
-            ></div>
+            <img
+              :src="game.background_image"
+              class="found-games__background"
+              alt=""
+            />
+            <div class="found-games__overlay"></div>
             <div class="found-games__content">
               <h4 class="found-games__title">
                 {{ game.name }}
               </h4>
-              <h5 class="found-games__date">
-                <i class="fal fa-calendar-alt"></i>
-                {{ game.released | moment("L") }}
-              </h5>
-            </div>
-            <div class="found-games__arrow">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M8.46495 20.485L16.95 12L8.46495 3.515L7.04995 4.929L14.122 12L7.04995 19.071L8.46495 20.485Z"
-                  fill="#fdfcff"
-                ></path>
-              </svg>
             </div>
           </div>
         </div>
       </transition>
-      <div class="d-flex justify-content-center d-md-none mt-2 mb-2">
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M3.51489 8.465L11.9999 16.95L20.4849 8.465L19.0709 7.05L11.9999 14.122L4.92889 7.05L3.51489 8.465Z"
-            fill="#fdfcff"
-          ></path>
-        </svg>
-      </div>
     </div>
 
-    <div class="col-xl-4 col-lg-4 col-md-6 pt-3" v-if="currentGame">
+    <div
+      class="col-xl-4 col-lg-4 col-md-6 pt-3 order-lg-3 order-md-2 order-sm-2 order-2"
+    >
       <transition name="fade">
-        <div class="found-game">
-          <img
-            class="found-game__img"
-            :src="currentGame.background_image__crop"
-            :alt="currentGame.slug"
-          />
-          <div class="card-body">
+        <div
+          class="found-game"
+          v-if="currentGame"
+          v-bind:style="{
+            backgroundImage: 'url(' + currentGame.background_image__crop + ')'
+          }"
+        >
+          <div class="found-game__overlay"></div>
+          <div class="found-game__body">
             <h3 class="pt-2">
               {{ currentGame.name }}
             </h3>
-            <div class="form-group">
-              <label for="selectMyRating">My rating</label>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01"
+                  >Оценка</label
+                >
+              </div>
               <select
                 v-model="currentGame.my_rating"
                 class="form-control"
@@ -156,13 +126,14 @@
                   id="completeGameCheckbox"
                   value="option1"
                 />
+
                 <label class="form-check-label" for="completeGameCheckbox"
-                  >Игра пройдена</label
+                  >Пройдена</label
                 >
               </div>
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
               <div class="form-check">
                 <input
                   v-model="currentGame.angry_flag"
@@ -175,10 +146,10 @@
                   >Взбесила</label
                 >
               </div>
-            </div>
+            </div> -->
 
             <div class="mt-3 alert alert-success" role="alert" v-if="added">
-              <span class="search-game__message_success"
+              <span class="search-form__message_success"
                 ><i class="fas fa-check"></i> Добавлено</span
               >
             </div>
@@ -186,9 +157,9 @@
               <button
                 type="button"
                 @click="addGame"
-                class="btn btn-outline-primary"
+                class="btn btn-success search-form__button"
               >
-                <i class="fal fa-plus"></i>
+                <!-- <i class="fal fa-plus"></i> -->
                 Добавить
               </button>
             </div>
@@ -204,6 +175,7 @@ import axios from "axios";
 
 export default {
   name: "GameCreator",
+  components: {},
   data: function() {
     return {
       games: null,
@@ -226,7 +198,7 @@ export default {
         const url =
           "https://api.rawg.io/api/games?key=" +
           this.rawgApiKey +
-          "&page_size=7&search=" +
+          "&page_size=5&search=" +
           this.insertGame;
 
         axios

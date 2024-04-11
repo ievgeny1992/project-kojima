@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div
-      class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 mt-md-3 mb-md-3 mt-2 mb-2"
+      class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mt-md-3 mb-md-3 mt-2 mb-2"
       v-for="(genre, index) in genres"
       v-bind:key="index"
     >
@@ -9,19 +9,25 @@
         <div class="row justify-content-between">
           <div class="col-auto">
             <span class="genre__title">
-              <i class="far fa-bookmark"></i> {{ genre._id }}
+              <i
+                class="far fa-bookmark"
+                :style="{
+                  color: colors[index]
+                }"
+              ></i>
+              {{ genre._id }}
             </span>
           </div>
           <div class="col">
             <div class="genre__percent">{{ getPrecent(genre.percent) }}%</div>
           </div>
         </div>
-        <div class="genre__progress-bar mt-3 mb-3">
+        <!-- <div class="genre__progress-bar mt-3 mb-3">
           <div
             class="genre__progress-bar_load"
             v-bind:style="{ width: getPrecent(genre.percent) + '%' }"
           ></div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -31,7 +37,8 @@
 export default {
   name: "GenresPercentItems",
   props: {
-    genres: Array
+    genres: Array,
+    colors: Array
   },
   methods: {
     getPrecent: function(count) {
@@ -72,6 +79,7 @@ export default {
   &__percent {
     font-weight: 900;
     text-align: right;
+    font-size: 17px;
   }
 
   &__progress-bar {

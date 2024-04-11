@@ -59,13 +59,13 @@
       </div>
     </div>
     <transition name="fade" v-if="currentType == 'items'">
-      <GenresPercentItems :genres="genres" />
+      <GenresPercentItems :genres="genres" :colors="colors" />
     </transition>
 
     <transition name="fade">
       <div class="row" v-if="currentType == 'line'">
         <div class="col-12">
-          <GenresPercentLine :genres="genres" />
+          <GenresPercentLine :genres="genres" :colors="colors" />
         </div>
       </div>
     </transition>

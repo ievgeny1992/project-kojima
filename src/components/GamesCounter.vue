@@ -18,7 +18,7 @@
         </div>
       </div>
 
-      <div class="col-auto">
+      <div class="col-sm-auto col-xs-12">
         <div class="row align-items-center">
           <div class="col">
             <h3>
@@ -36,15 +36,9 @@
                 ></span
               >
               <div
-                class="games-counter__progress"
-                :style="{
-                  width: getPercent + '%'
-                }"
-              ></div>
-              <div
                 class="box"
                 :style="{
-                  left: getPercent - 11 + '%'
+                  left: getPercent + '%'
                 }"
               >
                 <div class="wave -one"></div>
@@ -88,7 +82,7 @@ export default {
   },
   computed: {
     getPercent: function() {
-      return (this.countAllGames / 100) * this.countCompleteGames;
+      return Math.ceil((this.countAllGames / 100) * this.countCompleteGames);
     }
   }
 };
@@ -109,8 +103,12 @@ export default {
   overflow: hidden;
 
   &_complete {
-    width: 370px;
+    width: 100%;
     border: 4px solid #4c8c33;
+
+    @include media-breakpoint-up(sm) {
+      width: 370px;
+    }
   }
 
   &__digit {
@@ -125,26 +123,19 @@ export default {
       font-size: 20px;
     }
   }
-
-  &__progress {
-    position: absolute;
-    left: 0;
-    // background-color: rgba(76, 140, 51, 1);
-    height: 100%;
-  }
 }
 
 .box {
   position: absolute;
-  top: -173px;
-  transform: rotate(80deg);
+  top: -200px;
+  transform: rotate(90deg);
 }
 
 .wave {
   position: absolute;
   opacity: 0.4;
-  width: 420px;
-  height: 370px;
+  width: 600px;
+  height: 580px;
   margin-top: 0px;
   border-radius: 50%;
 }
@@ -160,13 +151,13 @@ export default {
 
 .wave.-one {
   animation: rotate 10000ms infinite linear;
-  opacity: 15%;
+  opacity: 0.15;
   background: #4c8c33;
 }
 
 .wave.-two {
   animation: rotate 9000ms infinite linear;
-  opacity: 40%;
+  opacity: 0.4;
   background: #4c8c33;
 }
 </style>

@@ -29,7 +29,27 @@
         <div class="row">
           <div class="col mt-3">
             <div class="games-counter games-counter_complete">
-              <span class="games-counter__digit">{{ countCompleteGames }}</span>
+              <span class="games-counter__digit"
+                >{{ countCompleteGames
+                }}<span class="games-counter__digit_percent"
+                  >({{ getPercent + "%" }})</span
+                ></span
+              >
+              <div
+                class="games-counter__progress"
+                :style="{
+                  width: getPercent + '%'
+                }"
+              ></div>
+              <div
+                class="box"
+                :style="{
+                  left: getPercent - 11 + '%'
+                }"
+              >
+                <div class="wave -one"></div>
+                <div class="wave -two"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -65,12 +85,18 @@ export default {
   mounted: function() {
     this.getGamesCount();
     this.getCompleteCount();
+  },
+  computed: {
+    getPercent: function() {
+      return (this.countAllGames / 100) * this.countCompleteGames;
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .games-counter {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,14 +106,67 @@ export default {
   text-align: center;
   background-color: $item-color;
   border-radius: 10px;
+  overflow: hidden;
 
   &_complete {
+    width: 370px;
     border: 4px solid #4c8c33;
   }
 
   &__digit {
+    position: relative;
+    z-index: 10;
     font-size: 38px;
     font-weight: 900;
+
+    &_percent {
+      padding-left: 5px;
+      color: #4c8c33;
+      font-size: 20px;
+    }
   }
+
+  &__progress {
+    position: absolute;
+    left: 0;
+    // background-color: rgba(76, 140, 51, 1);
+    height: 100%;
+  }
+}
+
+.box {
+  position: absolute;
+  top: -173px;
+  transform: rotate(80deg);
+}
+
+.wave {
+  position: absolute;
+  opacity: 0.4;
+  width: 420px;
+  height: 370px;
+  margin-top: 0px;
+  border-radius: 50%;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  from {
+    transform: rotate(360deg);
+  }
+}
+
+.wave.-one {
+  animation: rotate 10000ms infinite linear;
+  opacity: 15%;
+  background: #4c8c33;
+}
+
+.wave.-two {
+  animation: rotate 9000ms infinite linear;
+  opacity: 40%;
+  background: #4c8c33;
 }
 </style>

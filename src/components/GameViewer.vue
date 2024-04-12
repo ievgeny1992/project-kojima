@@ -10,6 +10,22 @@
                 v-bind:src="game.cover"
                 v-bind:alt="game.slug"
               />
+              <div class="game-viewer__complete-badge" v-if="game.completeFlag">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="max-h-[80%]"
+                >
+                  <path
+                    d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.78 9.7L11.11 15.37C10.97 15.51 10.78 15.59 10.58 15.59C10.38 15.59 10.19 15.51 10.05 15.37L7.22 12.54C6.93 12.25 6.93 11.77 7.22 11.48C7.51 11.19 7.99 11.19 8.28 11.48L10.58 13.78L15.72 8.64C16.01 8.35 16.49 8.35 16.78 8.64C17.07 8.93 17.07 9.4 16.78 9.7Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+                <span>complete</span>
+              </div>
               <span class="game-viewer__user-rating">
                 {{ game.userRating }}/10
               </span>
@@ -59,32 +75,51 @@
         </div>
       </div>
 
-      <div
-        class="row game-viewer__content no-gutters mb-4"
-        v-if="game.description"
-      >
+      <div class="row mb-4">
         <div class="col-12">
-          <div class="game-viewer__description" v-html="game.description"></div>
-        </div>
-        <div
-          class="col-xl-3 col-lg-4 col-md-6 col-sm-12 pt-2 pb-2"
-          v-for="(screenshot, index) in game.screenshots"
-          v-bind:key="index"
-        >
-          <img
-            :src="screenshot.image"
-            class="img-thumbnail"
-            alt=""
-            style="width: 100%;"
-          />
-        </div>
+          <div class="game-viewer__content" v-if="game.description">
+            <div class="row">
+              <div class="col-12">
+                <div
+                  class="game-viewer__description"
+                  v-html="game.description"
+                ></div>
+              </div>
+              <div class="col-12" v-if="game.screenshots">
+                <div class="row">
+                  <div class="col-12">
+                    <h3>
+                      Скриншоты
+                    </h3>
+                  </div>
+                </div>
+                <div class="row">
+                  <div
+                    class="col-xl-3 col-lg-4 col-md-6 col-sm-12 pb-4"
+                    v-for="(screenshot, index) in game.screenshots"
+                    v-bind:key="index"
+                  >
+                    <img
+                      :src="screenshot.image"
+                      class="game-viewer__screenshot"
+                      alt="game.slug"
+                    />
+                  </div>
+                </div>
+              </div>
 
-        <div class="col-xl-7 col-lg-8 col-md-12 col-sm-12" v-if="game.video">
-          <vue-plyr>
-            <video>
-              <source v-bind:src="game.video" type="video/mp4" />
-            </video>
-          </vue-plyr>
+              <div
+                class="col-xl-7 col-lg-8 col-md-12 col-sm-12"
+                v-if="game.video"
+              >
+                <vue-plyr>
+                  <video>
+                    <source v-bind:src="game.video" type="video/mp4" />
+                  </video>
+                </vue-plyr>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -200,6 +235,11 @@ export default {
     width: 100%;
   }
 
+  &__screenshot {
+    width: 100%;
+    border-radius: 8px;
+  }
+
   &__title {
     font-size: 20px;
 
@@ -209,6 +249,33 @@ export default {
 
     @include media-breakpoint-up(lg) {
       font-size: 27px;
+    }
+  }
+
+  &__complete-badge {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 9px;
+    left: 9px;
+    color: #18c964;
+    background-color: hsl(146deg 79% 44% / 20%);
+    backdrop-filter: saturate(120%) blur(4px);
+    padding: 0px 5px;
+    border: 2px #4c8c33 solid;
+    border-radius: 12px;
+    font-size: 14px;
+
+    @include media-breakpoint-up(md) {
+      top: 15px;
+      left: 15px;
+      font-size: 18px;
+      padding: 1px 10px;
+    }
+
+    & > span {
+      padding-left: 3px;
+      font-weight: 500;
     }
   }
 

@@ -22,12 +22,15 @@
             <div class="genre__percent">{{ getPrecent(genre.percent) }}%</div>
           </div>
         </div>
-        <!-- <div class="genre__progress-bar mt-3 mb-3">
+        <div class="genre__progress-bar mt-3 mb-3">
           <div
             class="genre__progress-bar_load"
-            v-bind:style="{ width: getPrecent(genre.percent) + '%' }"
+            v-bind:style="{
+              width: getPrecent(genre.percent) + '%',
+              backgroundColor: colors[index]
+            }"
           ></div>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>
@@ -55,6 +58,7 @@ export default {
   overflow: hidden;
 
   &__item {
+    position: relative;
     background-color: $item-color;
     border-left: 10px solid #2a2b30;
     border-radius: 4px;
@@ -89,7 +93,6 @@ export default {
     &_load {
       width: 0px;
       transition: all 2s;
-      background-color: $primary-color;
       border-radius: 10px;
       height: 6px;
     }

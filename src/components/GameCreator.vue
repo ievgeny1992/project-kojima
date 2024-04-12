@@ -4,7 +4,6 @@
       <!--Serach Form-->
       <div class="search-form">
         <div class="form-group pb-3">
-          <!-- <label class="search-form__label" for="name">Название игры</label> -->
           <input
             class="search-form__input form-control"
             name="name"
@@ -211,6 +210,7 @@ export default {
       const video = this.currentGame.clip
         ? this.currentGame.clip.clips.full
         : null;
+
       const addedGame = {
         name: this.currentGame.name,
         slug: this.currentGame.slug,

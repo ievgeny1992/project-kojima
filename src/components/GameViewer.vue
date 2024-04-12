@@ -66,6 +66,18 @@
         <div class="col-12">
           <div class="game-viewer__description" v-html="game.description"></div>
         </div>
+        <div
+          class="col-xl-3 col-lg-4 col-md-6 col-sm-12 pt-2 pb-2"
+          v-for="(screenshot, index) in game.screenshots"
+          v-bind:key="index"
+        >
+          <img
+            :src="screenshot.image"
+            class="img-thumbnail"
+            alt=""
+            style="width: 100%;"
+          />
+        </div>
 
         <div class="col-xl-7 col-lg-8 col-md-12 col-sm-12" v-if="game.video">
           <vue-plyr>
@@ -126,7 +138,7 @@ export default {
       axios
         .delete(process.env.VUE_APP_SERVER_URL + "/games/game/" + this.game._id)
         .then(response => {
-          if (response.status == 200) this.$router.push("/");
+          if (response.status == 200) this.$router.go(-1);
         })
         .catch(error => console.log(error));
     }

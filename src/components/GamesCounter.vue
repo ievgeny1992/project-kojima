@@ -43,6 +43,7 @@
               >
                 <div class="wave -one"></div>
                 <div class="wave -two"></div>
+                <div class="wave -three"></div>
               </div>
             </div>
           </div>
@@ -135,7 +136,7 @@ export default {
   position: absolute;
   opacity: 0.4;
   width: 600px;
-  height: 580px;
+  height: 560px;
   margin-top: 0px;
   border-radius: 50%;
 }
@@ -151,13 +152,19 @@ export default {
 
 .wave.-one {
   animation: rotate 10000ms infinite linear;
-  opacity: 0.15;
+  opacity: 0.1;
   background: #4c8c33;
 }
 
 .wave.-two {
   animation: rotate 9000ms infinite linear;
-  opacity: 0.4;
+  opacity: 0.2;
+  background: #4c8c33;
+}
+
+.wave.-three {
+  animation: rotate 8000ms infinite linear;
+  opacity: 0.3;
   background: #4c8c33;
 }
 </style>

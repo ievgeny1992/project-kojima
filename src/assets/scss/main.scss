@@ -497,29 +497,27 @@ a:hover {
 .found-games {
   &__item {
     position: relative;
-    height: 90px;
     display: flex;
-    flex-direction: row;
     align-items: center;
+    height: 90px;
     box-sizing: border-box;
-    padding: 30px 15px;
-    background-color: $item-color;
+    padding: 15px;
+    // background: rgba(0, 0, 0, 0.6);
+    background-size: cover;
+    background-position: center center;
     border-radius: 8px;
-    transition: transform 0.3s;
-    transform: translateX(0);
+    transition: height 0.2s ease-out;
     overflow: hidden;
     cursor: pointer;
 
-    // &:hover {
-    //   transform: translateX(10px);
-    // }
-
     &_active {
+      height: 235px;
       border: 2px solid #093;
-    }
+      z-index: 1;
 
-    &_active > .found-games__background {
-      transform: scale(1.1);
+      // & > .found-games__overlay {
+      //   backdrop-filter: saturate(120%) blur(2px);
+      // }
     }
   }
 
@@ -527,6 +525,7 @@ a:hover {
     position: absolute;
     width: 100%;
     height: 100%;
+    top: 0px;
     left: 0px;
     background: rgba(0, 0, 0, 0.6);
   }
@@ -555,6 +554,7 @@ a:hover {
   }
 
   &__content {
+    width: 100%;
     position: relative;
   }
 

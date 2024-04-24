@@ -19,11 +19,19 @@
             >
           </div>
         </div>
+
         <button
           type="button"
           class="btn search-form__button btn-primary"
           @click="searchGame"
         >
+          <div
+            class="spinner-border spinner-border-sm"
+            role="status"
+            v-if="loading"
+          >
+            <span class="sr-only">Loading...</span>
+          </div>
           <!-- <i class="fal fa-search"></i> -->
           Найти
         </button>
@@ -152,6 +160,7 @@ export default {
   data: function() {
     return {
       games: {},
+      loading: false,
       currentGame: {},
       insertGame: null,
       error: null,
@@ -162,22 +171,24 @@ export default {
     };
   },
   methods: {
-    searchGame: function() {
+    searchGame: async function() {
       this.clearData();
 
       if (!this.insertGame) {
         this.empty = "Введите название игры!";
       } else {
+        this.loading = true;
+
         const url =
           "https://api.rawg.io/api/games?key=" +
           this.rawgApiKey +
           "&page_size=5&search=" +
           this.insertGame;
 
-        axios
-          .get(url)
-          .then(response => (this.games = response.data.results))
-          .catch(error => console.log(error));
+        const response = await axios.get(url);
+        this.games = response.data["results"];
+
+        this.loading = false;
       }
     },
 
@@ -206,7 +217,7 @@ export default {
       }
     },
 
-    addGame: function() {
+    addGame: async function() {
       const video = this.currentGame.clip
         ? this.currentGame.clip.clips.full
         : null;
@@ -228,6 +239,18 @@ export default {
         genres: this.currentGame.genres,
         screenshots: this.currentGame.short_screenshots
       };
+
+      // try {
+      //   const response = axios.post(
+      //     process.env.VUE_APP_SERVER_URL + "/games",
+      //     addedGame
+      //   );
+      //   // this.added = response;
+      //   console.log("Response: " + response);
+      // } catch (error) {
+      //   this.error = error;
+      // }
+
       axios
         .post(process.env.VUE_APP_SERVER_URL + "/games", addedGame)
         .then(response => {

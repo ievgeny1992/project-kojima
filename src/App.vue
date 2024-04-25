@@ -1,6 +1,6 @@
 <template>
   <div class="app" id="app">
-    <Nav>
+    <Navigation>
       <router-link :to="{ name: 'home' }" class="sidebar__button">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path
@@ -86,7 +86,7 @@
           />
         </svg>
       </router-link>
-    </Nav>
+    </Navigation>
 
     <main class="page__content">
       <router-view />
@@ -95,12 +95,12 @@
 </template>
 
 <script>
-import Nav from "@/components/Nav.vue";
+import Navigation from "@/components/Navigation.vue";
 
 export default {
   name: "App",
   components: {
-    Nav
+    Navigation
   },
   data: function() {
     return {};

@@ -143,8 +143,6 @@ export default {
 <style lang="scss" scoped>
 .genres {
   width: 100%;
-  background-color: #292933;
-  border-radius: 4px;
 
   &__buttom {
     background-color: transparent;

@@ -7,13 +7,27 @@
           v-for="(genre, index) in genres"
           v-bind:key="index"
           :style="{
-            backgroundColor: colors[index],
             width: getPrecent(genre.percent) + '%'
           }"
-          :title="genre._id + ' ' + getPrecent(genre.percent) + '%'"
-          @mouseover="$event.target.classList.toggle('genre_active')"
-          @mouseleave="$event.target.classList.toggle('genre_active')"
-        ></div>
+        >
+          <div class="genre-text" v-if="genre.percent > 10">
+            <span class="genre-text__percent">
+              {{ getPrecent(genre.percent) }}%
+            </span>
+            <span class="genre-text__name">
+              {{ genre._id }}
+            </span>
+          </div>
+          <div
+            class="genre__area"
+            :style="{
+              backgroundColor: colors[index]
+            }"
+            :title="genre._id + ' ' + getPrecent(genre.percent) + '%'"
+            @mouseover="$event.target.classList.toggle('genre_active')"
+            @mouseleave="$event.target.classList.toggle('genre_active')"
+          ></div>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -64,30 +78,64 @@ export default {
 <style lang="scss" scoped>
 .genres {
   width: 100%;
-  background-color: #292933;
-  border-radius: 4px;
+
   &__tags {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     flex: 0 0 100%;
     max-width: 100%;
-    padding: 0px 20px 20px 20px;
   }
 
   &__lines {
     display: flex;
     flex: 0 0 100%;
     max-width: 100%;
-    padding: 45px 20px 35px 20px;
   }
 }
 .genre {
-  cursor: pointer;
-  height: 11px;
+  display: flex;
+  min-width: 5px;
+  flex-direction: column;
+  justify-content: end;
+  padding-top: 40px;
+  padding-bottom: 30px;
+  margin-left: 4px;
+  margin-right: 4px;
+
   &:first-child {
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
+    margin-left: 0px;
+  }
+
+  &:last-child {
+    margin-right: 0px;
+  }
+
+  &-text {
+    display: flex;
+    align-items: flex-end;
+    font-size: 14px;
+
+    &__name {
+      display: none;
+      padding: 5px 5px;
+      @include media-breakpoint-up(md) {
+        display: block;
+      }
+    }
+
+    &__percent {
+      font-weight: 900;
+      padding: 5px 0px 5px 1px;
+    }
+  }
+
+  &__area {
+    cursor: pointer;
+    box-sizing: border-box;
+    max-width: 100%;
+    height: 50px;
+    border-radius: 7px;
   }
 
   &_active {
@@ -96,10 +144,15 @@ export default {
     }
   }
 
-  &:last-child {
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-  }
+  // &:first-child {
+  //   border-top-left-radius: 8px;
+  //   border-bottom-left-radius: 8px;
+  // }
+
+  // &:last-child {
+  //   border-top-right-radius: 8px;
+  //   border-bottom-right-radius: 8px;
+  // }
 
   &-tag {
     display: flex;

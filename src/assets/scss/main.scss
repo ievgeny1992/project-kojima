@@ -141,6 +141,8 @@ a:hover {
 
 .avatar {
   display: none;
+  position: fixed;
+  bottom: 30px;
   width: 42px;
   height: 42px;
   overflow: hidden;

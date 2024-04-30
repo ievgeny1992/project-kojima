@@ -22,12 +22,15 @@
             >
               <div class="timeline-pin"></div>
               <div class="col-12">
-                <span class="timeline-date">
-                  <i class="fal fa-calendar-alt"></i>
-                  {{
-                    (item._id.month + "." + item._id.day) | moment("DD.MM")
-                  }}</span
-                >
+                <div class="timeline-date">
+                  <span class="timeline-month">
+                    <!-- <i class="fal fa-calendar-alt"></i> -->
+                    {{
+                      (item._id.month + "." + item._id.day) | moment("MMM")
+                    }}</span
+                  >
+                  <span class="timeline-day">{{ item._id.day }}</span>
+                </div>
               </div>
               <GameCard
                 v-for="(game, index) in item.games"
@@ -170,15 +173,33 @@ export default {
   }
 
   &-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // justify-content: center;
     font-size: 14px;
     font-weight: 700;
+    width: 77px;
+    height: 77px;
     background-color: #292933;
     border-radius: 7px;
-    padding: 5px 18px;
 
     @include media-breakpoint-up(md) {
       font-size: 17px;
     }
+  }
+
+  &-month {
+    text-transform: uppercase;
+    font-size: 19px;
+    color: #fe1453;
+    line-height: 35px;
+    font-weight: 400;
+  }
+
+  &-date {
+    font-size: 30px;
+    line-height: 29px;
   }
 
   &-content {
